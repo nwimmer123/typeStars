@@ -28,13 +28,35 @@ $(document).keydown(function(e) {
 
 //win condition
  
+var winner;
+
 	$(document).keydown(function(e) {
-		if ($(".one").css("left") === ("800px")) {
+		if ($(".one").css("left") === ("20px")) {
+			winner = "Player 1";
 			alert("Player one wins");
-		} else if ($(".two").css("left") === ("800px")) {
+			winRamifications();
+		} else if ($(".two").css("left") === ("20px")) {
+			winner = "Player 2";
 			alert("Player two wins");
+			winRamifications();
 		}
 	});
+
+//autoresets board
+var playerOneWins = 0;
+var playerTwoWins = 0;
+
+	function winRamifications() {
+		$(".one").css({left: 0,});
+		$(".two").css({left: 0,});
+		if (winner === "Player 1") {
+			playerOneWins += 1;
+		} else if (winner === "Player 2") {
+			playerTwoWins += 1;
+		}
+	}
+	
+
 
 });
 
