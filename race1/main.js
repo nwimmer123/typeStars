@@ -2,48 +2,42 @@ console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
  
+
+
+
+
 //p1 moves using keystroke l
 
 $(document).keydown(function(e) {
         if(e.keyCode == 76) {
-        $(".one").css({ left: "+=5px",})
+        $(".one").css({left: "+=5px",});
 		}
-	})
+	});
 
 //p2 moves using keystroke
 
 $(document).keydown(function(e) {
         if(e.keyCode == 65) {
-        $(".two").css({ left: "+=5px",})
+        $(".two").css({left: "+=5px",});
 		}
-	})
-
- /*
-	$(".player").click(function(){
-	    $(this).animate({ 
-	        left: "+=5px",
-	    });
 	});
 
-function anim(e){
+//working RESET button
+	$("button").on("click", function() {
+		$(".one").css({left: 0,});
+		$(".two").css({left: 0,});
+		
 	
-	if(e.keyCode === 76){
-		oneLeft +=5;
-		oneLeft.style.left = oneLeft + 'px';
+		});
+
+//win condition
+ /*
+
+	});
+
+	if ($(".one").css("left") === ("20px")) {
+		alert("winner");
 	}
-} 
- 
-function checkKeyCode(e) {
-	
-	alert(e.keyCode);
-}
-
-document.onkeydown = checkKeyCode;
-
-
-$(".player").animate({ 
-	        left: "+=5px",
-	    });
 */
 
 });
