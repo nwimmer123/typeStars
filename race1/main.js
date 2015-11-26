@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 $(document).keydown(function(e) {
         if(e.keyCode == 76) {
-        $(".one").animate({ left: "+=5px",})
+        $(".one").css({ left: "+=5px",})
 		}
 	})
 
@@ -14,7 +14,7 @@ $(document).keydown(function(e) {
 
 $(document).keydown(function(e) {
         if(e.keyCode == 65) {
-        $(".two").animate({ left: "+=5px",})
+        $(".two").css({ left: "+=5px",})
 		}
 	})
 
@@ -24,11 +24,6 @@ $(document).keydown(function(e) {
 	        left: "+=5px",
 	    });
 	});
-
-var player=document.getElementById('one');
-var board=document.getElementById('b');
-
-var oneLeft = 0;
 
 function anim(e){
 	
