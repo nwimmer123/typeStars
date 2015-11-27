@@ -30,9 +30,9 @@ header {
 .board {
     width: 800px;
     height: 100px;
-    position: relative;
-    top: 250px;
-    left: 10%;
+    position: fixed;
+    top: 40%;
+    left: 12%;
     z-index: -200;
 
 }
@@ -63,3 +63,8 @@ header {
     margin-bottom: 2%;
 }
 
+input {
+    position: fixed;
+    left: 45%;
+    top: 80%;
+}
