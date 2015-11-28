@@ -13,14 +13,11 @@ header {
     top: 25px;
     left: 0;
     position: absolute;
-    
-    
 }
 
 .board {
     width: 850px;
     height: 100px;
-
     position: fixed;
     bottom: 12%;
 
@@ -39,7 +36,7 @@ header {
     width: 150px;
     height: 81px;
     top: 10px;
-    left: 0px;
+    left: 0;
 }
 
 .two{
@@ -49,4 +46,50 @@ header {
     top: 50px;
     left: 0px;
     z-index: 5;
+}
+
+.score {
+    position: fixed;
+    top: 20%;
+    background: white;
+    border-radius: 15px;
+    border: 2px solid yellow;
+    z-index: 10;
+    padding: 5px;
+}
+
+.pOne{
+    left: 20%;
+}
+
+.pTwo{
+    left: 80%;
+}
+
+button {
+    position: fixed;
+    top: 96%;
+    left: 46%;
+    padding: 2px;
+}
+
+.winCounter {
+    position: fixed;
+    height: 95px;
+    width: 60px;
+    top: 40%;
+    background: white;
+    border-radius: 15px;
+    border: 4px solid red;
+    z-index: 10;
+    padding: 5px;
+    text-align: center;
+}
+
+.counterOne {
+    left: 10%;
+}
+
+.counterTwo {
+    left: 90%;
 }
