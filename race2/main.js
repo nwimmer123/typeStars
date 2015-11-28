@@ -24,10 +24,10 @@ $(document).ready(function(){
 
 //win condition
 	$(document).keydown(function(e) {
-		if ($(".one").css("left") === ("800px")) {
+		if ($(".one").css("left") === ("700px")) {
 			alert("Player one wins");
 			winRamifications();
-		} else if ($(".two").css("left") === ("800px")) {
+		} else if ($(".two").css("left") === ("700px")) {
 			alert("Player two wins");
 			winRamifications();
 		}

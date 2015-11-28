@@ -4,11 +4,7 @@ header {
     font-family: 'Short Stack', cursive;
     z-index: -1;
     color: ghostwhite;
-    background: linear-gradient(bottom, #064B07, #DCFC0C);
-    background: -webkit-linear-gradient(bottom, #064B07, #DCFC0C);
-    background: -moz-linear-gradient(bottom, #064B07, #DCFC0C);
     padding: 15px;
-
 }
 
 .player {
@@ -24,8 +20,7 @@ header {
 .board {
     width: 850px;
     height: 100px;
-    line-height: 100px;
-    background-color: green;
+
     position: fixed;
     bottom: 12%;
 
@@ -40,13 +35,17 @@ header {
 }
 
 .one{
-    background: url("images/panther2.gif");
+    background: url("images/leopard2.png");
+    width: 150px;
+    height: 81px;
     top: 10px;
     left: 0px;
 }
 
 .two{
-    background: url("images/panther.gif");
+    background: url("images/panther4.png");
+    width: 150px;
+    height: 92px;
     top: 50px;
     left: 0px;
     z-index: 5;
