@@ -36,13 +36,13 @@ $(document).ready(function(){
 //win condition
 	$(document).keydown(function(e) {
 		if ($(".one").css("left") === ("100px")) {
-			winRamifications();
 			pOneWins += 1;
+			winRamifications();
 			$(".counterOne").text("number of glorious victories: " + pOneWins);
 			$(".counterOne").show();
 		} else if ($(".two").css("left") === ("100px")) {
-			winRamifications();
 			pTwoWins +=1;
+			winRamifications();
 			$(".counterTwo").text("number of glorious victories: " + pTwoWins);
 			$(".counterTwo").show();
 		}
@@ -52,7 +52,22 @@ $(document).ready(function(){
 	function winRamifications() {
 		$(".one").css({left: 0,});
 		$(".two").css({left: 0,});
+		alert("Prepare for a rematch!!");
+		if (pOneWins === 3 || pTwoWins === 3){
+			if (pOneWins === 3) {
+				pOneWins = 0;
+				pTwoWins = 0;
+				alert(playerOneName + "has vanquished all!!!");
+			} else if(pTwoWins === 3) {
+				pOneWins = 0;
+				pTwoWins = 0;
+				alert(playerTwoName + "has vanquished all!!!");
+			}
+		}
 	}
 
+
+
 });
+
 
