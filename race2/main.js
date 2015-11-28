@@ -8,14 +8,14 @@ $(document).ready(function(){
  	$(".pTwo").text(playerTwoName+ " the panther!!");
 
 //p1 moves using keystroke a
-	$(document).keydown(function(e) {
+	$(document).keyup(function(e) {
 		if(e.keyCode == 65) {
 			$(".one").css({left: "+=5px",});
 			}
 		});
 
 //p2 moves using keystroke l
-	$(document).keydown(function(e) {
+	$(document).keyup(function(e) {
 		if(e.keyCode == 76) {
 			$(".two").css({left: "+=5px",});
 			}
@@ -57,11 +57,13 @@ $(document).ready(function(){
 			if (pOneWins === 3) {
 				pOneWins = 0;
 				pTwoWins = 0;
-				alert(playerOneName + "has vanquished all!!!");
+				$(".winCounter").hide();
+				alert(playerOneName + " has vanquished all!!!");	
 			} else if(pTwoWins === 3) {
 				pOneWins = 0;
 				pTwoWins = 0;
-				alert(playerTwoName + "has vanquished all!!!");
+				$(".winCounter").hide();
+				alert(playerTwoName + " has vanquished all!!!");	
 			}
 		}
 	}
