@@ -1,26 +1,27 @@
 header {
-	text-align: center;
-	font-size: 30px;
-    color: white;
-
-}
-.instructions {
-    color: white;
-    position: fixed;
-    top: 15%;
-    left: 46%;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Short Stack', cursive;
+    z-index: -1;
+    color: ghostwhite;
+    padding: 15px;
 }
 
-.toType {
-    font-size: 35px;
+.player {
+	width: 100px;
+    height: 100px;
+    top: 25px;
+    left: 0;
     position: absolute;
-    background-color: yellow;
-    color: black;
-    padding: 10px;
-    border-radius: 20px;
-    opacity: .75;
 }
 
+.board {
+    width: 850px;
+    height: 100px;
+    position: fixed;
+    bottom: 12%;
+
+}
 .background {
     width: 100%;
     height: 100%;
@@ -30,56 +31,77 @@ header {
     z-index: -500;
 }
 
-.player {
-    background: url("images/spaceship.png");
-    top: 25px;
-    height: 43px;
-    width: 75px;
+.one{
+    background: url("images/leopard2.png");
+    width: 150px;
+    height: 81px;
+    top: 10px;
     left: 0;
-    position: absolute;
-    z-index: -25;
 }
 
-.board {
-
-    width: 800px;
-    height: 100px;
-    position: fixed;
-    top: 40%;
-  
-    z-index: -200;
-
+.two{
+    background: url("images/panther4.png");
+    width: 150px;
+    height: 92px;
+    top: 50px;
+    left: 0px;
+    z-index: 5;
 }
 
-.score{
+.score {
+    font-family: 'Short Stack', cursive;
     position: fixed;
-    bottom: 0;
-    color: black;
-    background-color: white;
-    padding: 10px;
-    margin-bottom: 5%;
-    border-radius: 10px;
+    top: 20%;
+    background: antiquewhite;
+    border-radius: 15px;
+    border: 2px solid yellow;
+    z-index: 10;
+    padding: 5px;
+    opacity: .8;
 }
 
 .pOne{
-    margin-left: 5%;
-    left: 0;
+    left: 10%;
 }
 
 .pTwo{
-  margin-right: 5%;
-  right: 0;
+    left: 75%;
 }
 
-.button{
+button {
+    font-family: 'Short Stack', cursive;
     position: fixed;
-    bottom: 0;
-    left: 45%;
-    margin-bottom: 2%;
+    top: 96%;
+    left: 46%;
+    padding: 2px;
 }
 
-input {
+.winCounter {
+    font-family: 'Short Stack', cursive;
     position: fixed;
-    left: 45%;
-    top: 80%;
+    top: 40%;
+    background: lightyellow;
+    border-radius: 15px;
+    border: 4px solid red;
+    z-index: 10;
+    padding: 5px;
+    text-align: center;
+    opacity: .6;
+}
+
+.counterOne {
+    left: 10%;
+}
+
+.counterTwo {
+    left: 60%;
+}
+
+.enemy {
+    position:fixed;
+    height: 50px;
+    width: 50px;
+    background-color: black;
+    z-index: 100;
+    margin: 5px;
 }

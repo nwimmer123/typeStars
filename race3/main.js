@@ -1,386 +1,153 @@
 console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
- 
- var words = [
-    "anuran",
-    "unconsummative",
-    "commy",
-    "backwardation",
-    "ungoverning",
-    "gieseking",
-    "paesiello",
-    "chewer",
-    "seasnail",
-    "skipway",
-    "noneloquent",
-    "ami",
-    "cicada",
-    "oehlenschlger",
-    "canty",
-    "cetological",
-    "compendious",
-    "polarizing",
-    "remoteness",
-    "ureterolithotomy",
-    "summae",
-    "interrobang",
-    "underchief",
-    "petrifaction",
-    "reinterpretation",
-    "unsyllabified",
-    "nonroutine",
-    "aviatrices",
-    "raving",
-    "cyclecar",
-    "group",
-    "subintestinal",
-    "blowup",
-    "unscourged",
-    "removal",
-    "embodier",
-    "proagreement",
-    "creek",
-    "taxpaid",
-    "traverse",
-    "supernormal",
-    "pervertible",
-    "injun",
-    "nondistortive",
-    "joaqun",
-    "speyer",
-    "cossack",
-    "misdefined",
-    "ungilded",
-    "convoluting",
-    "citral",
-    "undraping",
-    "algophobia",
-    "accumulative",
-    "logion",
-    "groete",
-    "warmthlessness",
-    "overfrighten",
-    "girasole",
-    "pharynx",
-    "piano",
-    "heeder",
-    "invading",
-    "brescia",
-    "holden",
-    "eucken",
-    "kaliph",
-    "reveille",
-    "eglantine",
-    "lugo",
-    "thiosulfuric",
-    "teletypewriter",
-    "faena",
-    "condignity",
-    "pilch",
-    "unabetting",
-    "probatively",
-    "hreidmar",
-    "supervictory",
-    "extemporizing",
-    "oberland",
-    "overnationalizing",
-    "sanious",
-    "kamasutra",
-    "baal",
-    "adios",
-    "niger",
-    "amorphously",
-    "conditivium",
-    "geomagnetism",
-    "delaroche",
-    "unsatiated",
-    "unpesterous",
-    "invaginated",
-    "alterably",
-    "unshrivelled",
-    "nephrite",
-    "enthusing",
-    "dehypnotised",
-    "burelly",
-    "fauna",
-    "defy",
-    "waves",
-    "houston",
-    "gowany",
-    "moral",
-    "equaliser",
-    "apophthegmatic",
-    "commutate",
-    "schaerbeek",
-    "unprobational",
-    "discretionarily",
-    "surfboarder",
-    "ballplayer",
-    "honorarium",
-    "noninsistency",
-    "ethanol",
-    "mamaguy",
-    "newton",
-    "triumviri",
-    "elsewhither",
-    "mazopathia",
-    "udaipur",
-    "paynimhood",
-    "gravure",
-    "grattan",
-    "semimagical",
-    "evangeliaries",
-    "farthing",
-    "overorganize",
-    "atomy",
-    "gleaner",
-    "unspasmodic",
-    "overrepress",
-    "shriving",
-    "aristotelian",
-    "ingenerate",
-    "lumberjack",
-    "unrushed",
-    "tonguing",
-    "leiomyomatous",
-    "soapberry",
-    "monosymmetric",
-    "nonsmoking",
-    "cornstalk",
-    "gradating",
-    "mnesicles",
-    "shreadhead",
-    "ysolde",
-    "lazing",
-    "adorable",
-    "denuder",
-    "hematothermal",
-    "advertence",
-    "luckless",
-    "kten",
-    "apprehensibly",
-    "exert",
-    "desilverizing",
-    "crevassed",
-    "entomostracan",
-    "tweeter",
-    "enslavement",
-    "appreciational",
-    "diazotized",
-    "inexplainable",
-    "signpost",
-    "martello",
-    "intermarine",
-    "unsheathing",
-    "ruinously",
-    "reilluminate",
-    "apeiron",
-    "outpraising",
-    "vaunt",
-    "argo",
-    "sort",
-    "creeded",
-    "monaural",
-    "precombat",
-    "uncreaturely",
-    "summersault",
-    "amboina",
-    "depredating",
-    "frieze",
-    "agung",
-    "palki",
-    "ibrd",
-    "influent",
-    "solidomind",
-    "pleasable",
-    "clomb",
-    "finniest",
-    "roundline",
-    "manward",
-    "lade",
-    "sharecrop",
-    "domelike",
-    "fid",
-    "hustle",
-    "mischoose",
-    "hogmenay",
-    "importation",
-    "preflight",
-    "moffette",
-    "exit",
-    "antievolutionistic",
-    "wasteweir",
-    "ala",
-    "villously",
-    "medon",
-    "uncharitableness",
-    "nonextrication",
-    "gunfighting",
-    "elegit",
-    "etymologised",
-    "gratulatory",
-    "corporative",
-    "carpel",
-    "wispiest",
-    "femerell",
-    "preimpression",
-    "reposeful",
-    "dan",
-    "rybinsk",
-    "bengasi",
-    "wakefield",
-    "athetosic",
-    "throng",
-    "cenotaphic",
-    "skeptic",
-    "provisional",
-    "antetype",
-    "zoï¿¥ï¾¡plastic",
-    "midrib",
-    "drawbore",
-    "knight",
-    "anticommunistical",
-    "kibbutzim",
-    "yellowbelly",
-    "depress",
-    "hebetude",
-    "nondiffuse",
-    "nipp",
-    "chevronwise",
-    "nne",
-    "catachrestic",
-    "buffon",
-    "spree",
-    "signalman",
-    "sapajou",
-    "rebrush",
-    "unactable",
-    "nectarising",
-    "paracelsic",
-    "overassuming",
-    "joab",
-    "imputrescibility",
-    "escurial",
-    "nickpoint",
-    "uncertifying",
-    "firehouse",
-    "partitionment",
-    "keying",
-    "flageolet",
-    "exterminating",
-    "salesclerk",
-    "inclination",
-    "grecale",
-    "isoperimetric",
-    "didymous",
-    "leinster",
-    "asserter",
-    "lacteal",
-    "interfile",
-    "reynolds",
-    "brierwood",
-    "neoter",
-    "penicillately",
-    "noninterrupted",
-    "dariole",
-    "overshade",
-    "katar",
-    "bar",
-    "handball",
-    "pinole",
-    "unossified",
-    "solo",
-    "wenona",
-    "slimiest",
-    "unintrlined",
-    "yassy",
-    "twosome",
-    "factotum",
-    "hegel",
-    "ferry",
-    "guardant",
-    "griseldis",
-    "disseminule",
-    "omentum",
-    ];
+ 	
+ 	var playerOneName = prompt("Player one, what is your name?");
+ 	var playerTwoName = prompt("Player two, what is your name?");
+ 	$(".pOne").text(playerOneName + " the jaguar!!");
+ 	$(".pTwo").text(playerTwoName+ " the panther!!");
 
- //I grabbed this function of stackOverflow after researching for awhile.
-
-     function shuffle(array) {
-      var currentIndex = array.length, temporaryValue, randomIndex ;
-
-      // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
-
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
-
-      return array;
-    }
-//populate array w different words for each game
-    var gameWords = [];
-    function generateWords() {
-        shuffle(words);
-        for(var i = 0; i < 50; i ++) {
-            gameWords.push(words[i]);
-         }
-    }
-     
-    generateWords();
-
-function clearTextBox () {
-    $(document).keydown(function(e) {
-    if(e.keyCode == 13) {
-        $("input").val("");
-        }
-    });
-}
-
-    $(".toType").text(gameWords[0]);
-/*
-    var typedWord = $("input").val();
-    var targetWord = $(".toType").text();
- 
- $(document).keydown(function(e){
-    for (var j = 1; j < gameWords.length; j++){
-        if((e.keyCode == 13) && (typedWord === targetWord)){
-            $(".player").css({left: "+=15px",});
-            $(".toType").text(gameWords[j]);
-            $("input").val("");
-        } else {
-            $("input").val("");
-            return;
-        }
-    }
-});
-
-
-    var typedWord = $("input").val();
-    var targetWord = $(".toType").text();
-
-    $(document).keydown(function(e) {
-        if((e.keyCode == 13) && (typedWord === targetWord)){
-            $(".player").css({left: "+=15px",});
-            $("input").val("");
-        }
-    });
-*/
-//working RESET button
-	$("button").on("click", function() {
-		$(".player").css({left: 0,});
+//p1 moves left using keystroke a
+	$(document).keyup(function(e) {
+		if(e.keyCode == 65) {
+			$(".one").css({left: "-=5px",});
+			}
+		});
+//p1 moves right using keystroke s	
+		$(document).keyup(function(e) {
+		if(e.keyCode == 83) {
+			$(".one").css({left: "+=5px",});
+			}
+		});
+//p1 moves up using keystroke z
+			$(document).keyup(function(e) {
+		if(e.keyCode == 90) {
+			$(".one").css({top: "+=5px",});
+			}
+		});
+//p1 moves up using keystroke w
+				$(document).keyup(function(e) {
+		if(e.keyCode == 87) {
+			$(".one").css({top: "-=5px",});
+			}
 		});
 
-	
+//p2 moves left using keystroke k
+	$(document).keyup(function(e) {
+		if(e.keyCode == 75) {
+			$(".two").css({left: "-=5px",});
+			}
+		});
+//p2 moves right using keystroke l	
+		$(document).keyup(function(e) {
+		if(e.keyCode == 76) {
+			$(".two").css({left: "+=5px",});
+			}
+		});
+//p2 moves up using keystroke o
+			$(document).keyup(function(e) {
+		if(e.keyCode == 79) {
+			$(".two").css({top: "-=5px",});
+			}
+		});
+//p2 moves up using keystroke ,
+				$(document).keyup(function(e) {
+		if(e.keyCode == 188) {
+			$(".two").css({top: "+=5px",});
+			}
+		});
+//working RESET button
+	$("button").on("click", function() {
+		$(".one").css({left: 0,});
+		$(".two").css({left: 0,});
+		});
+
+	$(".winCounter").hide();
+
+	var pOneWins = 0;
+	var pTwoWins = 0;
+
+
+//win condition
+	$(document).keydown(function(e) {
+		if ($(".one").css("left") === ("100px")) {
+			pOneWins += 1;
+			winRamifications();
+			$(".counterOne").text("number of glorious victories: " + pOneWins);
+			$(".counterOne").show();
+		} else if ($(".two").css("left") === ("100px")) {
+			pTwoWins +=1;
+			winRamifications();
+			$(".counterTwo").text("number of glorious victories: " + pTwoWins);
+			$(".counterTwo").show();
+		}
+	});
+
+//autoresets board
+	function winRamifications() {
+		$(".one").css({left: 0,});
+		$(".two").css({left: 0,});
+		alert("Prepare for a rematch!!");
+		if (pOneWins === 3 || pTwoWins === 3){
+			if (pOneWins === 3) {
+				pOneWins = 0;
+				pTwoWins = 0;
+				$(".winCounter").hide();
+				alert(playerOneName + " has vanquished all!!!");	
+			} else if(pTwoWins === 3) {
+				pOneWins = 0;
+				pTwoWins = 0;
+				$(".winCounter").hide();
+				alert(playerTwoName + " has vanquished all!!!");	
+			}
+		}
+	}
+
+
+    animateDiv();
+    
+
+// i snagged all the following functions off of Stack Overflow, but they do 
+//mostly make sense to me
+function makeNewPosition(){
+    
+    // Get viewport dimensions (remove the dimension of the div)
+    var h = $(window).height() - 50;
+    var w = $(window).width() - 50;
+    
+    var nh = Math.floor(Math.random() * h);
+    var nw = Math.floor(Math.random() * w);
+    
+    return [nh,nw];    
+    
+}
+
+function animateDiv(){
+    var newq = makeNewPosition();
+    var oldq = $('.enemy').offset();
+    var speed = calcSpeed([oldq.top, oldq.left], newq);
+    
+    $('.enemy').animate({ top: newq[0], left: newq[1] }, speed, function(){
+      animateDiv();        
+    });
+    
+};
+
+function calcSpeed(prev, next) {
+    
+    var x = Math.abs(prev[1] - next[1]);
+    var y = Math.abs(prev[0] - next[0]);
+    
+    var greatest = x > y ? x : y;
+    
+    var speedModifier = 0.1;
+
+    var speed = Math.ceil(greatest/speedModifier);
+
+    return speed;
+
+}
 
 });
-
 
 
