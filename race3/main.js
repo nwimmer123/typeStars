@@ -1,11 +1,23 @@
 console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
+
+var playerOne = {
+	name: "player1",
+	avatar: "",
+	score: 0,
+};
+
+var playerTwo = {
+	name: "player2",
+	avatar: "",
+	score: 0,
+};
  	
- 	var playerOneName = prompt("Player one, what is your name?");
- 	var playerTwoName = prompt("Player two, what is your name?");
- 	$(".pOne").text(playerOneName + " the jaguar!!");
- 	$(".pTwo").text(playerTwoName+ " the panther!!");
+ 	playerOne.name = prompt("Player one, what is your name?");
+ 	playerTwo.name = prompt("Player two, what is your name?");
+ 	$(".pOne").text(playerOne.name + " the jaguar!!");
+ 	$(".pTwo").text(playerTwo.name + " the panther!!");
 
 //p1 moves left using keystroke a
 	$(document).keyup(function(e) {
@@ -102,13 +114,14 @@ $(document).ready(function(){
 			}
 		}
 	}
-
-
-    animateDiv();
-    
-
+/*
 // i snagged all the following functions off of Stack Overflow, but they do 
 //mostly make sense to me
+    animateDiv();
+    animateDiv2();
+    
+
+
 function makeNewPosition(){
     
     // Get viewport dimensions (remove the dimension of the div)
@@ -133,6 +146,16 @@ function animateDiv(){
     
 };
 
+function animateDiv2(){
+    var newq = makeNewPosition();
+    var oldq = $('.enemy2').offset();
+    var speed = calcSpeed([oldq.top, oldq.left], newq);
+    
+    $('.enemy2').animate({ top: newq[0], left: newq[1] }, speed, function(){
+      animateDiv();        
+    });
+    
+};
 function calcSpeed(prev, next) {
     
     var x = Math.abs(prev[1] - next[1]);
@@ -147,7 +170,66 @@ function calcSpeed(prev, next) {
     return speed;
 
 }
+//collision detectors that sort of work, these functions are from
+//https://jquerygamesforbeginners.wordpress.com/identify-div-collision/
+//detecting divs collision
+    function collision($div1, $div2) {
+      var x1 = $div1.offset().left;
+      var y1 = $div1.offset().top;
+      var h1 = $div1.outerHeight(true);
+      var w1 = $div1.outerWidth(true);
+      var b1 = y1 + h1;
+      var r1 = x1 + w1;
+      var x2 = $div2.offset().left;
+      var y2 = $div2.offset().top;
+      var h2 = $div2.outerHeight(true);
+      var w2 = $div2.outerWidth(true);
+      var b2 = y2 + h2;
+      var r2 = x2 + w2;
+        
+      if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+          return false;
+      } else {
+      console.log("collision!!")
+      $(".one").css({left: 0,});
+      return true;
+      }
+  }
 
+//detect collision for every 2 seconds
+window.setInterval(function() {
+    $('#result2').text(collision($('.one'), $('.enemy')));
+}, 50);
+
+    function collision($div1, $div2) {
+      var x1 = $div1.offset().left;
+      var y1 = $div1.offset().top;
+      var h1 = $div1.outerHeight(true);
+      var w1 = $div1.outerWidth(true);
+      var b1 = y1 + h1;
+      var r1 = x1 + w1;
+      var x2 = $div2.offset().left;
+      var y2 = $div2.offset().top;
+      var h2 = $div2.outerHeight(true);
+      var w2 = $div2.outerWidth(true);
+      var b2 = y2 + h2;
+      var r2 = x2 + w2;
+        
+      if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+          return false;
+      } else {
+      console.log("collision!!")
+      $(".player").css({left: 0,});
+      return true;
+      }
+  }
+
+//detect collision for every 2 seconds
+window.setInterval(function() {
+    $('#result2ssss').text(collision($('.two'), $('.enemy2')));
+}, 50);
+
+*/
 });
 
 

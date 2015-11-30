@@ -98,10 +98,15 @@ button {
 }
 
 .enemy {
+    
     position:fixed;
-    height: 50px;
-    width: 50px;
-    background-color: black;
     z-index: 100;
-    margin: 5px;
+  
+}
+
+.enemy2 {
+    
+    position:fixed;
+    z-index: 100;
+  
 }
