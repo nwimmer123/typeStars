@@ -39,12 +39,16 @@ $(document).ready(function(){
       
   var typedWord = $("input").val();
   var targetWord = $(".toType").text();
+//timer function for race
+  var runRace = true;
+  setTimeout(function () {
+    runRace = false;
+  }, 3000);
  
   $(document).keyup(function(e){
- 
 
     for (var j = 1; j < gameWords.length; j++){
-      console.log(typedWord);
+    
       if($("input").val() === targetWord){
         console.log("They match!")
         $(".player").css({left: "+=15px",});
