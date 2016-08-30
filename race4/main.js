@@ -347,19 +347,39 @@ function clearTextBox () {
 
     $(".toType").text(gameWords[0]);
 
+    
     var targetWord = $(".toType").text();
-    var typedWord = $("#word").val();
+    console.log(targetWord);
+ 
+    $(document).keyup(function(e){
+    var typedWord = $("input").val();
+        for (var j = 1; j < gameWords.length; j++){
+            console.log(typedWord);
+            if(typedWord === targetWord){
+                console.log("They match!")
+                $(".player").css({left: "+=15px",});
+                $(".toType").text(gameWords[j]);
+                $("input").val("");
+            } else {
+                //$("input").val("");
+                return;
+            }
+        }
+    });
 
-    $(document).keydown(function(e){
+    // var targetWord = $(".toType").text();
+    // var typedWord = $("#word").val();
+
+    // $(document).keydown(function(e){
        
-        if((e.keyCode == 13) && (typedWord === targetWord)){
-            $(".player").css({left: "+=15px",});
+    //     if((e.keyCode == 13) && (typedWord === targetWord)){
+    //         $(".player").css({left: "+=15px",});
             //$(".toType").text(gameWords[1]);
             //$("input").val("");
         
-        }
+       // }
   
-    });
+    //});
 
  /*
     var typedWord = $("input").val();
