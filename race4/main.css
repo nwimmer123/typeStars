@@ -37,7 +37,7 @@ header {
     width: 75px;
     left: 0;
     position: absolute;
-    z-index: -25;
+    z-index: 25;
 }
 
 .board {

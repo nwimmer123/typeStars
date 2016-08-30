@@ -302,34 +302,35 @@
     ];
 
 
- //I grabbed this function of stackOverflow after researching for awhile.
 
-     function shuffle(array) {
-      var currentIndex = array.length, temporaryValue, randomIndex ;
+//  //I grabbed this function of stackOverflow after researching for awhile.
 
-      // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
+//      function shuffle(array) {
+//       var currentIndex = array.length, temporaryValue, randomIndex ;
 
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
+//       // While there remain elements to shuffle...
+//       while (0 !== currentIndex) {
 
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
+//         // Pick a remaining element...
+//         randomIndex = Math.floor(Math.random() * currentIndex);
+//         currentIndex -= 1;
 
-      return array;
-    }
-//populate array w different words for each game
+//         // And swap it with the current element.
+//         temporaryValue = array[currentIndex];
+//         array[currentIndex] = array[randomIndex];
+//         array[randomIndex] = temporaryValue;
+//       }
 
-    shuffle(words);
-    var gameWords = [];
+//       return array;
+//     }
+// //populate array w different words for each game
 
-    for(var i = 0; i < 50; i ++) {
-        gameWords.push(words[i]);
-     }
+//     shuffle(words);
+//     var gameWords = [];
+
+//     for(var i = 0; i < 50; i ++) {
+//         gameWords.push(words[i]);
+//      }
 
 
 
