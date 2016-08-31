@@ -11,7 +11,7 @@ $(document).ready(function(){
 		$(".player").css({left: 0,});
 		});
 
-  
+
 
 });
 
@@ -43,26 +43,22 @@ function shuffle(array) {
      }
   }
 
-  function runRace() {
+  function setupRace() {
     document.getElementById("word").focus();
     generateWords();
-
     $(".toType").text(gameWords[0]);
+  }
 
+  function runRace() {
+    setupRace();
     var j = 1;
-
     $(document).keyup(function(e){
       var targetWord = $(".toType").text();
       var typedWord = $("#word").val();
       while (j < gameWords.length){
-        console.log(j);
-        console.log(typedWord);
-      
-        if($("#word").val() === targetWord){
-          console.log("They match!")
+        if(typedWord === targetWord){
           $(".player").css({left: "+=15px",});
           targetWord = $(".toType").text(gameWords[j]);
-
           $("#word").val("");
           j++;
         }else {

@@ -2,13 +2,17 @@ header {
 	text-align: center;
 	font-size: 30px;
     color: white;
-
+    font-family: 'Geostar', cursive;
+    margin-top: 15px;
+    font-size: 40px;
 }
-.instructions {
+
+.wordDisplay {
     color: white;
     position: fixed;
     top: 15%;
-    left: 46%;
+    left: 40%;
+    font-family: 'Krona One', sans-serif;
 }
 
 .toType {
@@ -41,14 +45,11 @@ header {
 }
 
 .board {
-
     width: 800px;
     height: 100px;
     position: fixed;
     top: 40%;
-  
     z-index: -200;
-
 }
 
 .score{
