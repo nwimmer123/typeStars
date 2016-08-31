@@ -10,6 +10,17 @@ $(document).ready(function(){
 		$(".player").css({left: 0,});
 		});
 
+  var numPlayers = 0;
+  $("#playerCountBtn").on("click", function() {
+    console.log("clicked");
+    if ($("#playerCount").val() > 4) {
+      $(lowerIntro).text("Please enter a number less then 4");
+    } else {
+      numPlayers = $("#playerCount").val();
+      console.log(numPlayers);
+    }
+  })
+
 });
 
 function shuffle(array) {
