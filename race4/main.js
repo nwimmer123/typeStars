@@ -2,7 +2,6 @@ $(document).ready(function(){
   
   //START RACE button
   $("#start").on("click", function() {
-    console.log("clicked start");
     runRace();
   })
 
@@ -10,8 +9,6 @@ $(document).ready(function(){
 	$("#reset").on("click", function() {
 		$(".player").css({left: 0,});
 		});
-
-
 
 });
 
@@ -35,38 +32,38 @@ function shuffle(array) {
 }
 
 //populate array w different words for each game
-  var gameWords = [];
-  function generateWords() {
-    shuffle(words);
-    for(var i = 0; i < 50; i ++) {
-      gameWords.push(words[i]);
-     }
-  }
+var gameWords = [];
+function generateWords() {
+  shuffle(words);
+  for(var i = 0; i < 50; i ++) {
+    gameWords.push(words[i]);
+   }
+}
 
-  function setupRace() {
-    document.getElementById("word").focus();
-    generateWords();
-    $(".toType").text(gameWords[0]);
-  }
+function setupRace() {
+  document.getElementById("word").focus();
+  generateWords();
+  $(".toType").text(gameWords[0]);
+}
 
-  function runRace() {
-    setupRace();
-    var j = 1;
-    $(document).keyup(function(e){
-      var targetWord = $(".toType").text();
-      var typedWord = $("#word").val();
-      while (j < gameWords.length){
-        if(typedWord === targetWord){
-          $(".player").css({left: "+=15px",});
-          targetWord = $(".toType").text(gameWords[j]);
-          $("#word").val("");
-          j++;
-        }else {
-          return
-        };
-      }
-    });
-  }
+function runRace() {
+  setupRace();
+  var j = 1;
+  $(document).keyup(function(e){
+    var targetWord = $(".toType").text();
+    var typedWord = $("#word").val();
+    while (j < gameWords.length){
+      if(typedWord === targetWord){
+        $(".player").css({left: "+=15px",});
+        targetWord = $(".toType").text(gameWords[j]);
+        $("#word").val("");
+        j++;
+      }else {
+        return
+      };
+    }
+  });
+}
 
 
 

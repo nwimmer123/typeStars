@@ -1,10 +1,25 @@
-header {
+.header {
 	text-align: center;
 	font-size: 30px;
     color: white;
     font-family: 'Geostar', cursive;
     margin-top: 15px;
     font-size: 40px;
+}
+
+.intro {
+    background-color: white;
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    z-index: 200;
+    padding: 0px 15px 0px 15px;
+    text-align: center;
+    font-family: 'Krona One', sans-serif;
+    border: medium dashed green;
+}
+#lowerIntro {
+    margin-top: 15px;
 }
 
 .wordDisplay {
@@ -79,7 +94,7 @@ header {
     margin-bottom: 2%;
 }
 
-input {
+#word {
     position: fixed;
     left: 45%;
     top: 80%;
