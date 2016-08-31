@@ -1,8 +1,21 @@
 $(document).ready(function(){
 
+  //define players
+  var player1name = "";
+  var player2name = "";
+  var player3name = "";
+  var player4name = "";
+
+  //define avatars
+  var avatar1 = "";
+  var avatar2 = "";
+  var avatar3 = "";
+  var avatar4 = "";
+
   //hide elements
   $("#avatar").hide();
   $(".wordDisplay").hide();
+  $("#instructions").hide();
   
   //START RACE button
   $("#start").on("click", function() {
@@ -27,6 +40,8 @@ $(document).ready(function(){
       console.log(numPlayers);
     }
   });
+
+  //
 
 });
 
