@@ -1,9 +1,21 @@
 $(document).ready(function(){
+  
+  //START RACE button
+  $("#start").on("click", function() {
+    console.log("clicked start");
+    runRace();
+  })
 
+  //working RESET button
+	$("#reset").on("click", function() {
+		$(".player").css({left: 0,});
+		});
 
- //I grabbed this function of stackOverflow after researching for awhile.
+  
 
- function shuffle(array) {
+});
+
+function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex ;
 
   // While there remain elements to shuffle...
@@ -30,15 +42,14 @@ $(document).ready(function(){
       gameWords.push(words[i]);
      }
   }
-     
-  generateWords();
 
+  function runRace() {
+    document.getElementById("word").focus();
+    generateWords();
 
-  $(".toType").text(gameWords[0]);
+    $(".toType").text(gameWords[0]);
 
-
-  
-  var j = 1;
+    var j = 1;
 
     $(document).keyup(function(e){
       var targetWord = $(".toType").text();
@@ -59,45 +70,7 @@ $(document).ready(function(){
         };
       }
     });
-
-
-
-  // function runRace() {
-  //   $(document).keyup(function(e){
-  //     var j = 1;
-  //     var typedWord = $("input").val();
-  //     while (j < gameWords.length){
-  //       console.log(j);
-  //       console.log(typedWord);
-      
-  //       if($("input").val() === targetWord){
-  //         console.log("They match!")
-  //         $(".player").css({left: "+=15px",});
-  //         targetWord = $(".toType").text(gameWords[j]);
-
-  //         $("input").val("");
-  //         j++;
-  //       }
-  //     }
-  //   });
-  // }
-
-  //START RACE button
-  $("#start").on("click", function() {
-    console.log("clicked start");
-    runRace();
-  })
-
-
-
-//working RESET button
-	$("#reset").on("click", function() {
-		$(".player").css({left: 0,});
-		});
-
-	
-
-});
+  }
 
 
 
