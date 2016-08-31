@@ -36,37 +36,62 @@ $(document).ready(function(){
 
   $(".toType").text(gameWords[0]);
 
-      
-  var typedWord = $("input").val();
-  var targetWord = $(".toType").text();
 
-//timer function for race
+  
+  var j = 1;
 
-
-
-
-  function runRace() {
     $(document).keyup(function(e){
-
-      for (var j = 1; j < gameWords.length; j++){
+      var targetWord = $(".toType").text();
+      var typedWord = $("#word").val();
+      while (j < gameWords.length){
+        console.log(j);
+        console.log(typedWord);
       
-        if($("input").val() === targetWord){
+        if($("#word").val() === targetWord){
           console.log("They match!")
           $(".player").css({left: "+=15px",});
           targetWord = $(".toType").text(gameWords[j]);
 
-          $("input").val("");
-        }
+          $("#word").val("");
+          j++;
+        }else {
+          return
+        };
       }
     });
-  }
 
-  // var startTime = Date.now();
-  // while ((Date.now() - startTime ) < 3000) { runRace();
-  // };
+
+
+  // function runRace() {
+  //   $(document).keyup(function(e){
+  //     var j = 1;
+  //     var typedWord = $("input").val();
+  //     while (j < gameWords.length){
+  //       console.log(j);
+  //       console.log(typedWord);
+      
+  //       if($("input").val() === targetWord){
+  //         console.log("They match!")
+  //         $(".player").css({left: "+=15px",});
+  //         targetWord = $(".toType").text(gameWords[j]);
+
+  //         $("input").val("");
+  //         j++;
+  //       }
+  //     }
+  //   });
+  // }
+
+  //START RACE button
+  $("#start").on("click", function() {
+    console.log("clicked start");
+    runRace();
+  })
+
+
 
 //working RESET button
-	$("button").on("click", function() {
+	$("#reset").on("click", function() {
 		$(".player").css({left: 0,});
 		});
 
