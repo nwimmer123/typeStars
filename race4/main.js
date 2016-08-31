@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+  //hide elements
+  $("#avatar").hide();
+  $(".wordDisplay").hide();
   
   //START RACE button
   $("#start").on("click", function() {
@@ -10,6 +14,7 @@ $(document).ready(function(){
 		$(".player").css({left: 0,});
 		});
 
+  //player selector
   var numPlayers = 0;
   $("#playerCountBtn").on("click", function() {
     console.log("clicked");
@@ -17,9 +22,11 @@ $(document).ready(function(){
       $(lowerIntro).text("Please enter a number less then 4");
     } else {
       numPlayers = $("#playerCount").val();
+      $("#intro").hide();
+      $("#avatar").show();
       console.log(numPlayers);
     }
-  })
+  });
 
 });
 

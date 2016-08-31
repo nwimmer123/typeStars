@@ -7,11 +7,11 @@
     font-size: 40px;
 }
 
-.intro {
+.select {
     background-color: white;
     position: absolute;
     top: 15%;
-    left: 30%;
+    left: 26%;
     z-index: 200;
     padding: 0px 15px 0px 15px;
     text-align: center;
@@ -50,7 +50,7 @@
 }
 
 .player {
-    background: url("images/spaceship.png");
+    background: url("images/spaceship1.png");
     top: 25px;
     height: 43px;
     width: 75px;

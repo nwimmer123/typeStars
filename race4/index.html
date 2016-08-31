@@ -25,12 +25,22 @@
 
 	<body>
     <h1 class="header">Type to the Stars!!!</h1>
-    <div class="intro conatiner">
+
+    <!-- Player Select -->
+    <div class="select container col-sm-6" id="intro">
       <h4>How many players?</h4>
-        <input type="text" id="playerCount"><button class="btn" id="playerCountBtn">Enter</button>
+      <div class="input-group">
+        <input type="text" class="form-control" id="playerCount">
+        <span class="btn input-group-addon" id="playerCountBtn">Enter</span>
+      </div>
       <p id="lowerIntro">no more then 4 can play at once</p> 
     </div>
 
+    <!-- Avatar Select -->
+    <div class="select container col-sm-6" id="avatar">
+      <h4>Select Your Avatar</h4>
+ 
+    </div>
     <div class="wordDisplay"> 
       <p class="wordIntro">Your word is:</p>
       <div class="toType"></div>
