@@ -39,25 +39,31 @@ $(document).ready(function(){
       
   var typedWord = $("input").val();
   var targetWord = $(".toType").text();
+
 //timer function for race
-  var runRace = true;
-  setTimeout(function () {
-    runRace = false;
-  }, 3000);
- 
-  $(document).keyup(function(e){
 
-    for (var j = 1; j < gameWords.length; j++){
-    
-      if($("input").val() === targetWord){
-        console.log("They match!")
-        $(".player").css({left: "+=15px",});
-        targetWord = $(".toType").text(gameWords[j]);
 
-        $("input").val("");
+
+
+  function runRace() {
+    $(document).keyup(function(e){
+
+      for (var j = 1; j < gameWords.length; j++){
+      
+        if($("input").val() === targetWord){
+          console.log("They match!")
+          $(".player").css({left: "+=15px",});
+          targetWord = $(".toType").text(gameWords[j]);
+
+          $("input").val("");
+        }
       }
-    }
-  });
+    });
+  }
+
+  var startTime = Date.now();
+  while ((Date.now() - startTime ) < 3000) { runRace();
+  };
 
 //working RESET button
 	$("button").on("click", function() {
