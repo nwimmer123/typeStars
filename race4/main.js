@@ -61,9 +61,9 @@ $(document).ready(function(){
     });
   }
 
-  var startTime = Date.now();
-  while ((Date.now() - startTime ) < 3000) { runRace();
-  };
+  // var startTime = Date.now();
+  // while ((Date.now() - startTime ) < 3000) { runRace();
+  // };
 
 //working RESET button
 	$("button").on("click", function() {
