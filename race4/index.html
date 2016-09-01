@@ -5,20 +5,24 @@
 	  <title>Type to the Stars</title>
 
 		<!-- CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  -->
 		<link rel="stylesheet" href="main.css">
 
+
     <!-- VENDOR SCRIPTS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--< script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+    <script src="jquery-1.12.4.js"></script>
+    <script src="bootstrap.js"></script>
+    
 		
     <!-- JS -->
     <script src="main.js"></script>
     <script src="randomWords.js"></script>
 
     <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Geostar" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Geostar|Krona+One" rel="stylesheet">
+<!--     <link href="https://fonts.googleapis.com/css?family=Geostar" rel="stylesheet"> -->
+<!--     <link href="https://fonts.googleapis.com/css?family=Geostar|Krona+One" rel="stylesheet"> -->
 
 
 	</head>
@@ -38,11 +42,17 @@
 
     <!-- Avatar Select -->
     <div class="select container col-sm-6" id="avatar">
-      <h4>Select Your Ship</h4>
+      <h4 id="playerSelector">Player 1</h4>
+      <h4>Please enter your name.</h4>
+      <div class="input-group">
+        <input type="text" class="form-control" id="playerName">
+      </div>
+      <h4>And Select Your Ship</h4>
       <img id="ship1" src="images/spaceship1.png">
       <img id="ship2" src="images/spaceship2.png">
       <img id="ship3" src="images/spaceship3.png">
       <img id="ship4" src="images/spaceship4.png">
+      <button class="btn" id="submitPlayer">Submit</button>
  
     </div>
 

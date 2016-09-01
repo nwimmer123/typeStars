@@ -1,16 +1,26 @@
 $(document).ready(function(){
 
   //define players
-  var player1name = "";
-  var player2name = "";
-  var player3name = "";
-  var player4name = "";
-
-  //define avatars
-  var avatar1 = "";
-  var avatar2 = "";
-  var avatar3 = "";
-  var avatar4 = "";
+  var player1 = {
+    name: "player 1",
+    avatar: "",
+    score: 0,
+  }
+  var player2 = {
+    name: "player 2",
+    avatar: "",
+    score: 0,
+  }
+  var player3 = {
+    name: "player 3",
+    avatar: "",
+    score: 0,
+  }
+  var player4 = {
+    name: "player 4",
+    avatar: "",
+    score: 0,
+  }
 
   //hide elements
   $("#avatar").hide();
@@ -41,7 +51,21 @@ $(document).ready(function(){
     }
   });
 
-  //
+  //submit player info button
+  var playerNum = 1;
+  var tempPlayer = "";
+  $("#submitPlayer").on("click", function () {
+    tempPlayer = "player" + playerNum;
+    console.log(tempPlayer);
+    tempPlayer.name = $("#playerName").text();
+    console.log(player1.name);
+    playerNum += 1;
+    if (playerNum > numPlayers) {
+      $("#avatar").hide();
+    } else {
+      return
+    }
+  });
 
 });
 
