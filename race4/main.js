@@ -67,10 +67,10 @@ $(document).ready(function(){
     }
   });
 
-  //select avatar
+  //select avatar  
   $(".avatars").on("click", function() {
-    console.log("clicked")
     var id = $(this).attr("id");
+    $(this).css('background-color', 'yellow');
     console.log(id);
   })
 
