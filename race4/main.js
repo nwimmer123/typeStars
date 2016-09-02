@@ -40,7 +40,6 @@ $(document).ready(function(){
   //player selector
   var numPlayers = 0;
   $("#playerCountBtn").on("click", function() {
-    console.log("clicked");
     if ($("#playerCount").val() > 4) {
       $(lowerIntro).text("Please enter a number less then 4");
     } else {
@@ -57,15 +56,23 @@ $(document).ready(function(){
   $("#submitPlayer").on("click", function () {
     tempPlayer = "player" + playerNum;
     console.log(tempPlayer);
-    tempPlayer.name = $("#playerName").text();
+    tempPlayer.name = $("#playerName").val();
     console.log(player1.name);
     playerNum += 1;
     if (playerNum > numPlayers) {
       $("#avatar").hide();
+      $("#instructions").show();
     } else {
       return
     }
   });
+
+  //select avatar
+  $(".avatars").on("click", function() {
+    console.log("clicked")
+    var id = $(this).attr("id");
+    console.log(id);
+  })
 
 });
 
@@ -121,6 +128,7 @@ function runRace() {
     }
   });
 }
+
 
 
 
