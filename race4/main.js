@@ -35,33 +35,25 @@ $(document).ready(function(){
     $(this).css('background-color', 'yellow');
     console.log(id);
   });
-  //BUG: If you cahnege your mind and click a different 
+  //BUG: If you change your mind and click a different 
   //ship then the yellow background remains on the prior 
   //selection, however, it does selcet the correct one 
   //anyways
 
-  var jsonArr = [];
-  var playerNum = 1;
-  var tempPlayer = "";
+  var playerInfo = [];
   $("#submitPlayer").on("click", function () {
-
-    jsonArr.push({
+    playerInfo.push({
       name: $("#playerName").val(),
       avatar: id,
       score:[],
     });
-    console.log(jsonArr);
-
+    var playerAvatar = 'url("images/space' + id + '.png")'
+    console.log(playerAvatar)
+    $(".player").css({background: playerAvatar});
+    console.log(playerInfo);
     $("#avatar").hide();
     $("#instructions").show();
-
   });
-
-  
-
-
-
-
 
 });
 
