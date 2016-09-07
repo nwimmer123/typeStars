@@ -1,29 +1,6 @@
 $(document).ready(function(){
 
-  //define players
-  var player1 = {
-    name: "player 1",
-    avatar: "",
-    score: 0,
-  }
-  var player2 = {
-    name: "player 2",
-    avatar: "",
-    score: 0,
-  }
-  var player3 = {
-    name: "player 3",
-    avatar: "",
-    score: 0,
-  }
-  var player4 = {
-    name: "player 4",
-    avatar: "",
-    score: 0,
-  }
-
   //hide elements
-  $("#avatar").hide();
   $(".wordDisplay").hide();
   $("#instructions").hide();
   
@@ -38,41 +15,53 @@ $(document).ready(function(){
 		});
 
   //player selector
-  var numPlayers = 0;
-  $("#playerCountBtn").on("click", function() {
-    if ($("#playerCount").val() > 4) {
-      $(lowerIntro).text("Please enter a number less then 4");
-    } else {
-      numPlayers = $("#playerCount").val();
-      $("#intro").hide();
-      $("#avatar").show();
-      console.log(numPlayers);
-    }
-  });
+  //  CURRENTLY IRRELEVANT - until i reinstitute multiplayer
+  // var numPlayers = 0;
+  // $("#playerCountBtn").on("click", function() {
+  //   if ($("#playerCount").val() > 4) {
+  //     $(lowerIntro).text("Please enter a number less then 4");
+  //   } else {
+  //     numPlayers = $("#playerCount").val();
+  //     $("#intro").hide();
+  //     $("#avatar").show();
+  //     console.log(numPlayers);
+  //   }
+  // });
 
-  //submit player info button
+  //select avatar
+  var id = "";  
+  $(".avatars").on("click", function() {
+    id = $(this).attr("id");
+    $(this).css('background-color', 'yellow');
+    console.log(id);
+  });
+  //BUG: If you cahnege your mind and click a different 
+  //ship then the yellow background remains on the prior 
+  //selection, however, it does selcet the correct one 
+  //anyways
+
+  var jsonArr = [];
   var playerNum = 1;
   var tempPlayer = "";
   $("#submitPlayer").on("click", function () {
-    tempPlayer = "player" + playerNum;
-    console.log(tempPlayer);
-    tempPlayer.name = $("#playerName").val();
-    console.log(player1.name);
-    playerNum += 1;
-    if (playerNum > numPlayers) {
-      $("#avatar").hide();
-      $("#instructions").show();
-    } else {
-      return
-    }
+
+    jsonArr.push({
+      name: $("#playerName").val(),
+      avatar: id,
+      score:[],
+    });
+    console.log(jsonArr);
+
+    $("#avatar").hide();
+    $("#instructions").show();
+
   });
 
-  //select avatar  
-  $(".avatars").on("click", function() {
-    var id = $(this).attr("id");
-    $(this).css('background-color', 'yellow');
-    console.log(id);
-  })
+  
+
+
+
+
 
 });
 
