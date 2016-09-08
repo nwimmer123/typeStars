@@ -19,6 +19,15 @@
     margin-top: 20px;
 }
 
+.center {
+    color: yellow;
+    text-align: center;
+    font-family: 'Krona One', sans-serif;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 50px;
+}
+
 #submitPlayer {
     margin: 10px 0px 10px 0px;
 }

@@ -7,7 +7,7 @@ $(document).ready(function(){
   $("#instructions").hide();
   $("#word").hide();
   $(".player").hide();
-  $("#reset").hide();
+  $("#gameReset").hide();
   
   //START RACE button
   $("#start").on("click", function() {
@@ -17,7 +17,7 @@ $(document).ready(function(){
   //working RESET button
 	$("#reset").on("click", function() {
 		$(".player").css({left: 0,});
-		});
+	});
 
   //player selector
   //  CURRENTLY IRRELEVANT - until i reinstitute multiplayer
@@ -45,7 +45,6 @@ $(document).ready(function(){
   //anyways
 
   //Player creation
-  
   $("#submitPlayer").on("click", function () {
     playerInfo.push({
       name: $("#playerName").val(),
@@ -97,11 +96,11 @@ function timer() {
 function endRace() {
   $(".wordDisplay").hide();
   $("#word").hide();
-
   alert("Times Up!");
   generateScore();
   generateWinMessage();
   winDisplay();
+  $("#gameReset").show();
 }
 
 function generateScore() {
@@ -109,7 +108,6 @@ function generateScore() {
   tempScore = tempScore.slice(0, -2);
   tempScore = parseInt(tempScore) * 10;
   playerInfo[0].score.push(tempScore);
-  console.log(playerInfo);
 }
 
 var winMessage = "";
@@ -125,7 +123,8 @@ function generateWinMessage() {
 
 function winDisplay() {
   $("#winMessage").text(winMessage);
-  $("#finalScore").text(playerInfo[0].score);
+  var scoreMessage = (playerInfo[0].score) + " Miles Traveled"
+  $("#finalScore").text(scoreMessage);
 }
 
 function setupRace() {
