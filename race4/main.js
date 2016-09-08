@@ -87,6 +87,16 @@ function generateWords() {
    }
 }
 
+var timeoutID;
+function timer() {
+  timeoutID = window.setTimeout(endRace, 5000)
+}
+
+function endRace() {
+  $(".wordDisplay").hide();
+  alert("Times Up!");
+}
+
 function setupRace() {
   document.getElementById("word").focus();
   generateWords();
@@ -94,10 +104,12 @@ function setupRace() {
   $("#instructions").hide();
   $(".wordDisplay").show();
   $("#word").show();
+  $(".player").show();
 }
 
 function runRace() {
   setupRace();
+  timer();
   var j = 1;
   $(document).keyup(function(e){
     var targetWord = $(".toType").text();

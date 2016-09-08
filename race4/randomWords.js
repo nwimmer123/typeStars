@@ -84,7 +84,6 @@
     "kamasutra",
     "baal",
     "adios",
-    "niger",
     "amorphously",
     "conditivium",
     "geomagnetism",

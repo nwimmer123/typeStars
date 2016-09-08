@@ -16,6 +16,7 @@
     border: medium dashed green;
     margin-left: 25%;
     margin-right: 25%;
+    margin-top: 20px;
 }
 
 #submitPlayer {
@@ -26,11 +27,11 @@
     color: white;
     top: 15%;
     font-family: 'Krona One', sans-serif;
+    width: 70%;
 }
 
 .toType {
     font-size: 35px;
-    position: absolute;
     background-color: yellow;
     color: black;
     padding: 10px;
@@ -69,6 +70,10 @@
     position: fixed;
     top: 80%;
     left: 40%;
+}
+
+.timer {
+    background-color: red;
 }
 
 /* BUTTONS */
