@@ -34,7 +34,7 @@ $(document).ready(function(){
   // });
 
   //select avatar
-  var id = "";  
+  var id = "ship1";  
   $(".avatars").on("click", function() {
     id = $(this).attr("id");
     $(this).css('background-color', 'yellow');
