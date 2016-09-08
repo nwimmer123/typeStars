@@ -9,14 +9,21 @@
 
 .select {
     background-color: white;
-    position: absolute;
-    top: 15%;
-    left: 26%;
+    position: relative;
+    vertical-align: middle;
     z-index: 200;
     padding: 0px 15px 0px 15px;
     text-align: center;
     font-family: 'Krona One', sans-serif;
     border: medium dashed green;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
 }
 #lowerIntro {
     margin-top: 15px;
@@ -26,7 +33,7 @@
     color: white;
     position: fixed;
     top: 15%;
-    left: 40%;
+/*    left: 40%;*/
     font-family: 'Krona One', sans-serif;
 }
 
@@ -48,6 +55,8 @@
     left: 0;
     z-index: -500;
 }
+
+
 
 .player {
     background: url("images/spaceship2.png");
@@ -87,15 +96,23 @@
   right: 0;
 }
 
+/* BUTTONS */
+
 .button{
     position: fixed;
     bottom: 0;
-    left: 45%;
+/*    left: 45%;*/
     margin-bottom: 2%;
 }
 
 #word {
     position: fixed;
-    left: 45%;
+/*    left: 42%;*/
     top: 80%;
+}
+
+#start {
+    position: absolute;
+    top: 60%;
+/*    left: 46%;*/
 }

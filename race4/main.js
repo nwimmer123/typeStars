@@ -34,7 +34,6 @@ $(document).ready(function(){
   $(".avatars").on("click", function() {
     id = $(this).attr("id");
     $(this).css('background-color', 'yellow');
-    console.log(id);
   });
   //BUG: If you change your mind and click a different 
   //ship then the yellow background remains on the prior 
@@ -50,9 +49,7 @@ $(document).ready(function(){
       score:[],
     });
     var playerAvatar = 'url("images/space' + id + '.png")'
-    console.log(playerAvatar)
     $(".player").css({background: playerAvatar});
-    console.log(playerInfo);
     $("#avatar").hide();
     $("#instructions").show();
     $("#start").show();
