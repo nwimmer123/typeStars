@@ -43,7 +43,6 @@
     <!-- Avatar Select -->
     <div class="select" id="avatar">
       <h4>Please enter your name.</h4>
-      <!-- Object i want to center-->
       <input type="text" id="playerName">
       <h4>And Select Your Ship</h4>
       <img class="avatars" id="ship1" src="images/spaceship1.png">
@@ -57,6 +56,7 @@
     <div class="select container col-sm-6 text-center" id="instructions">
       <p>Your ship is powered by your typing skills. You will have 45 seconds to type as many words as possible. As soon as the word is typed correctly, then another word will appear. Keep playing and see if you can travel farther!</p>
       <h4>Are you ready!</h4>
+      <button type="button" class="btn btn-warning" id="start">START</button>
     </div>
 
     <!-- Target Word Display -->
@@ -70,11 +70,6 @@
       <div class="player"></div>
     </div>
 
-    <!-- Start Button-->
-    <div class="container text-center">
-      <button type="button" class="btn btn-danger" id="start">START</button>
-    </div>
-
     <!-- Word Input-->
     <div class="input-group center-block">
       <input  class="center-block" type="text" id="word">
@@ -82,7 +77,7 @@
 
     <button id="reset">RESET</button>
 
-
+    <!-- Background -->
     <div align="center"><img src="images/starfield.jpeg" class="background"></div>
 
 	</body>

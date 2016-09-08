@@ -66,20 +66,13 @@
 }
 
 #word {
-
-    margin-top: 120px;
+    position: fixed;
+    top: 80%;
+    left: 40%;
 }
 
 /* BUTTONS */
 
-.button{
-    position: fixed;
-    bottom: 0;
-/*    left: 45%;*/
-    margin-bottom: 2%;
-}
-
 #start {
-    position: absolute;
-    top: 60%;
+    margin-bottom: 15px;
 }

@@ -3,7 +3,9 @@ $(document).ready(function(){
   //hide elements
   $(".wordDisplay").hide();
   $("#instructions").hide();
-  $("#start").hide();
+  $("#word").hide();
+  $(".player").hide();
+  $("#reset").hide();
   
   //START RACE button
   $("#start").on("click", function() {
@@ -91,6 +93,7 @@ function setupRace() {
   $(".toType").text(gameWords[0]);
   $("#instructions").hide();
   $(".wordDisplay").show();
+  $("#word").show();
 }
 
 function runRace() {
