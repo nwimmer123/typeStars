@@ -1,3 +1,5 @@
+var playerInfo = [];
+
 $(document).ready(function(){
 
   //hide elements
@@ -43,7 +45,7 @@ $(document).ready(function(){
   //anyways
 
   //Player creation
-  var playerInfo = [];
+  
   $("#submitPlayer").on("click", function () {
     playerInfo.push({
       name: $("#playerName").val(),
@@ -98,13 +100,32 @@ function endRace() {
 
   alert("Times Up!");
   generateScore();
+  generateWinMessage();
+  winDisplay();
 }
 
 function generateScore() {
-  var score = $(".player").css("left");
-  score = score.slice(0, -2);
-  score = parseInt(score) * 100;
-  console.log(score);
+  var tempScore = $(".player").css("left");
+  tempScore = tempScore.slice(0, -2);
+  tempScore = parseInt(tempScore) * 10;
+  playerInfo[0].score.push(tempScore);
+  console.log(playerInfo);
+}
+
+var winMessage = "";
+function generateWinMessage() {
+  if (playerInfo[0].score > 3000 ){
+    winMessage = "Hoy nebula, " + playerInfo[0].name + "!!!! You're amazing!!!"
+  }else if(playerInfo[0].score > 1000){
+    winMessage = "You're pretty good, " + playerInfo[0].name + "!"
+  }else{
+    winMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[0].name + "!"
+  }
+}
+
+function winDisplay() {
+  $("#winMessage").text(winMessage);
+  $("#finalScore").text(playerInfo[0].score);
 }
 
 function setupRace() {
