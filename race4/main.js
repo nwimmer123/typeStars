@@ -3,6 +3,7 @@ $(document).ready(function(){
   //hide elements
   $(".wordDisplay").hide();
   $("#instructions").hide();
+  $("#start").hide();
   
   //START RACE button
   $("#start").on("click", function() {
@@ -40,6 +41,7 @@ $(document).ready(function(){
   //selection, however, it does selcet the correct one 
   //anyways
 
+  //Player creation
   var playerInfo = [];
   $("#submitPlayer").on("click", function () {
     playerInfo.push({
@@ -53,6 +55,7 @@ $(document).ready(function(){
     console.log(playerInfo);
     $("#avatar").hide();
     $("#instructions").show();
+    $("#start").show();
   });
 
 });
@@ -89,6 +92,8 @@ function setupRace() {
   document.getElementById("word").focus();
   generateWords();
   $(".toType").text(gameWords[0]);
+  $("#instructions").hide();
+  $(".wordDisplay").show();
 }
 
 function runRace() {
