@@ -1,4 +1,5 @@
 var playerInfo = [];
+var currentScore = 0;
 
 $(document).ready(function(){
 
@@ -14,9 +15,12 @@ $(document).ready(function(){
     runRace();
   })
 
-  //working RESET button
+  //RESET button
 	$("#reset").on("click", function() {
 		$(".player").css({left: 0,});
+    $("#endGame").hide();
+    $("#gameReset").hide();
+    runRace();
 	});
 
   //player selector
@@ -100,6 +104,7 @@ function endRace() {
   generateScore();
   generateWinMessage();
   winDisplay();
+  $("#endGame").show();
   $("#gameReset").show();
 }
 
@@ -107,14 +112,16 @@ function generateScore() {
   var tempScore = $(".player").css("left");
   tempScore = tempScore.slice(0, -2);
   tempScore = parseInt(tempScore) * 10;
-  playerInfo[0].score.push(tempScore);
+  playerInfo[0].score.unshift(tempScore);
 }
 
 var winMessage = "";
 function generateWinMessage() {
-  if (playerInfo[0].score > 3000 ){
+  currentScore = playerInfo[0].score[0];
+  console.log(currentScore);
+  if (currentScore > 3000 ){
     winMessage = "Hoy nebula, " + playerInfo[0].name + "!!!! You're amazing!!!"
-  }else if(playerInfo[0].score > 1000){
+  }else if(currentScore > 1000){
     winMessage = "You're pretty good, " + playerInfo[0].name + "!"
   }else{
     winMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[0].name + "!"
@@ -123,7 +130,7 @@ function generateWinMessage() {
 
 function winDisplay() {
   $("#winMessage").text(winMessage);
-  var scoreMessage = (playerInfo[0].score) + " Miles Traveled"
+  var scoreMessage = currentScore + " Miles Traveled"
   $("#finalScore").text(scoreMessage);
 }
 
