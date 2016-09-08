@@ -89,21 +89,31 @@ function generateWords() {
 
 var timeoutID;
 function timer() {
-  timeoutID = window.setTimeout(endRace, 5000)
+  timeoutID = window.setTimeout(endRace, 10000)
 }
 
 function endRace() {
   $(".wordDisplay").hide();
+  $("#word").hide();
+
   alert("Times Up!");
+  generateScore();
+}
+
+function generateScore() {
+  var score = $(".player").css("left");
+  score = score.slice(0, -2);
+  score = parseInt(score) * 100;
+  console.log(score);
 }
 
 function setupRace() {
+  $("#word").show();
   document.getElementById("word").focus();
   generateWords();
   $(".toType").text(gameWords[0]);
   $("#instructions").hide();
   $(".wordDisplay").show();
-  $("#word").show();
   $(".player").show();
 }
 
