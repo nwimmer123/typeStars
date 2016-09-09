@@ -94,7 +94,7 @@ function generateWords() {
 
 var timeoutID;
 function timer() {
-  timeoutID = window.setTimeout(endRace, 45000)
+  timeoutID = window.setTimeout(endRace, 45SOme of my favorite features in this apop000)
 }
 
 function endRace() {
@@ -120,7 +120,7 @@ function generateWinMessage() {
   currentScore = playerInfo[0].score[0];
   console.log(currentScore);
   if (currentScore > 3000 ){
-    winMessage = "Hoy nebula, " + playerInfo[0].name + "!!!! You're amazing!!!"
+    winMessage = "Holy nebula, " + playerInfo[0].name + "!!!! You're amazing!!!"
   }else if(currentScore > 1000){
     winMessage = "You're pretty good, " + playerInfo[0].name + "!"
   }else{
