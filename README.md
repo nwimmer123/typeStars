@@ -15,7 +15,7 @@ I wrote this game to get me back in touch with jQuery and some front end logic I
 
 ## Existing Features
 
-I tried to keep my functions really modular, like the win conditions, so I kept hte functions short and refered to them in other functions. I also worked on putting more comments in my HTML, as I have a tendency not to, but I'm training to train myself to comment more.
+I tried to keep my functions really modular, like the win conditions, so I kept the functions short and refered to them in other functions. I also worked on putting more comments in my HTML, as I have a tendency not to, but I'm training to train myself to comment more.
 
 Here's a sample of the modular code.
 
