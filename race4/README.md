@@ -1,5 +1,9 @@
 # Type to the Stars
 
+[heroku link](https://mysterious-basin-2931.herokuapp.com/)
+
+[github link](https://github.com/nwimmer123/project-01)
+
 I wrote this game to get me back in touch with jQuery and some front end logic I was feeling a little rusty with. Most of the apps I've made recenly have been CRUD web apps that haven't really used much logic, beyond the routing, so I wanted to write something with some simple problems to solve.
 
 ## Technologies Used
