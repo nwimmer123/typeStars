@@ -94,7 +94,7 @@ function generateWords() {
 
 var timeoutID;
 function timer() {
-  timeoutID = window.setTimeout(endRace, 10000)
+  timeoutID = window.setTimeout(endRace, 45000)
 }
 
 function endRace() {
