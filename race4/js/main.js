@@ -42,28 +42,33 @@ $(document).ready(function(){
 
   //select avatar
   var id = "ship1";  
-  $(".avatars").on("click", function() {
+  $(".avatars").on("click", createAvatarId);
+
+  function createAvatarId() {
     id = $(this).attr("id");
     $(this).css('background-color', 'yellow');
-  });
+  };
   //BUG: If you change your mind and click a different 
   //ship then the yellow background remains on the prior 
   //selection, however, it does selcet the correct one 
   //anyways
 
   //Player creation
-  $("#submitPlayer").on("click", function () {
+  $("#submitPlayer").on("click", createPlayer);
+
+  function createPlayer () {
     playerInfo.push({
       name: $("#playerName").val(),
       avatar: id,
       score:[],
     });
+    console.log(playerInfo);
     var playerAvatar = 'url("images/space' + id + '.png")'
     $(".player").css({background: playerAvatar});
     $("#avatar").hide();
     $("#instructions").show();
     $("#start").show();
-  });
+  };
 
 });
 
