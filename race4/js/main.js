@@ -9,6 +9,7 @@ $(document).ready(function(){
   $("#word").hide();
   $(".player").hide();
   $("#gameReset").hide();
+  $("#avatar").hide();
   
   //START RACE button
   $("#start").on("click", function() {
@@ -24,18 +25,20 @@ $(document).ready(function(){
 	});
 
   //player selector
-  //  CURRENTLY IRRELEVANT - until i reinstitute multiplayer
-  // var numPlayers = 0;
-  // $("#playerCountBtn").on("click", function() {
-  //   if ($("#playerCount").val() > 4) {
-  //     $(lowerIntro).text("Please enter a number less then 4");
-  //   } else {
-  //     numPlayers = $("#playerCount").val();
-  //     $("#intro").hide();
-  //     $("#avatar").show();
-  //     console.log(numPlayers);
-  //   }
-  // });
+  // CURRENTLY IRRELEVANT - until i reinstitute multiplayer
+  var numPlayers = 0;
+  $("#playerCountBtn").on("click", function() {
+    if ($("#playerCount").val() > 4) {
+      $(lowerIntro).text("Please enter a number less then 5");
+    } else if ($("#playerCount").val() < 1) {
+      $(lowerIntro).text("Please enter a number greater then 0");
+    } else {
+      numPlayers = $("#playerCount").val();
+      $("#intro").hide();
+      $("#avatar").show();
+      console.log(numPlayers);
+    }
+  });
 
   //select avatar
   var id = "ship1";  
@@ -94,7 +97,7 @@ function generateWords() {
 
 var timeoutID;
 function timer() {
-  timeoutID = window.setTimeout(endRace, 45SOme of my favorite features in this apop000)
+  timeoutID = window.setTimeout(endRace, 45000)
 }
 
 function endRace() {
