@@ -10,7 +10,7 @@
 .select {
     background-color: white;
     z-index: 200;
-    padding: 0px 15px 0px 15px;
+    padding: 10px 15px 0px 15px;
     text-align: center;
     font-family: 'Krona One', sans-serif;
     border: medium dashed green;

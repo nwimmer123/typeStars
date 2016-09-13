@@ -1,8 +1,6 @@
-
-
-
 $(document).ready(function(){
-
+  
+  //set default name for Create Player div 
   $("#numPlayers").text(tempPlayer);
 
   //hide elements
@@ -37,6 +35,7 @@ $(document).ready(function(){
 
 });
 
+//randomize word array order
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex ;
 
@@ -65,11 +64,13 @@ function generateWords() {
    }
 }
 
+//game timer
 var timeoutID;
 function timer() {
   timeoutID = window.setTimeout(endRace, 45000)
 }
 
+//hides race div and generates score
 function endRace() {
   $(".wordDisplay").hide();
   $("#word").hide();
@@ -132,8 +133,6 @@ var playerCounter = 1;
 var tempPlayer = "Player 1";
 function multiPlayerCreation() { 
   if (playerCounter < numPlayers) {
-    console.log("pc" + playerCounter);
-    console.log("np" + numPlayers)
     createPlayer();
     playerCounter += 1;
     resetPlayerChoice();
@@ -152,6 +151,7 @@ function resetPlayerChoice() {
   $("#numPlayers").text(tempPlayer);
 };
 
+//hides slection div and reveals instruvtion div
 function allCreated() {
   $("#avatar").hide();
   $("#instructions").show();
@@ -169,6 +169,7 @@ function createPlayer () {
   });
 };
 
+//hides instructions and reveals game
 function setupRace() {
   $("#word").show();
   document.getElementById("word").focus();
@@ -181,6 +182,7 @@ function setupRace() {
   $(".player").css({background: playerAvatar});
 }
 
+//advances ship on correct typing
 function runRace() {
   setupRace();
   timer();
