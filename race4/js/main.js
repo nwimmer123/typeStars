@@ -1,6 +1,10 @@
 var playerInfo = [];
 var currentScore = 0;
 var tempPlayer = "";
+var numPlayers = 0;
+var currentPlayer = 1;
+var id = "spaceship1";
+var playerCounter = 1; 
 
 $(document).ready(function(){
 
@@ -26,59 +30,13 @@ $(document).ready(function(){
 	});
 
   //player selector
-  var numPlayers = 0;
-  var currentPlayer = 1;
-  $("#playerCountBtn").on("click", function() {
-    if ($("#playerCount").val() > 4) {
-      $(lowerIntro).text("Please enter a number less then 5");
-    } else if ($("#playerCount").val() < 1) {
-      $(lowerIntro).text("Please enter a number greater then 0");
-    } else {
-      numPlayers = $("#playerCount").val();
-      $("#intro").hide();
-      $("#avatar").show();
-      tempPlayer = "Player " + currentPlayer;
-      $("#numPlayers").text(tempPlayer);
-      console.log(numPlayers);
-    }
-  });
+  $("#playerCountBtn").on("click", playerSelector);
 
   //select avatar
-  var id = "spaceship1";  
   $(".avatars").on("click", createAvatarId);
 
-  function createAvatarId() {
-    id = $(this).attr("id");
-    $(this).css('background-color', 'yellow');
-  };
-  //BUG: If you change your mind and click a different 
-  //ship then the yellow background remains on the prior 
-  //selection, however, it does selcet the correct one 
-  //anyways
-
   //Player creation
-  // var playerCounter = 1
-  // $("#submitPlayer").on("click", 
-  //   while (playerCounter < numPlayers) {
-  //     createPlayer();
-  //   });
-
-$("#submitPlayer").on("click", createPlayer);
-
-  function createPlayer () {
-    playerInfo.push({
-      player_id: tempPlayer, 
-      name: $("#playerName").val(),
-      avatar: id,
-      score:[],
-    });
-    console.log(playerInfo);
-    //var playerAvatar = 'url("images/' + id + '.png")'
-    
-    $("#avatar").hide();
-    $("#instructions").show();
-    $("#start").show();
-  };
+  $("#submitPlayer").on("click", multiPlayerCreation);
 
 });
 
@@ -151,6 +109,62 @@ function winDisplay() {
   var scoreMessage = currentScore + " Miles Traveled"
   $("#finalScore").text(scoreMessage);
 }
+
+function createAvatarId() {
+  id = $(this).attr("id");
+  $(this).css('background-color', 'yellow');
+};
+
+  //BUG: If you change your mind and click a different 
+  //ship then the yellow background remains on the prior 
+  //selection, however, it does selcet the correct one 
+  //anyways
+
+function playerSelector() {
+  if ($("#playerCount").val() > 4) {
+    $(lowerIntro).text("Please enter a number less then 5");
+  } else if ($("#playerCount").val() < 1) {
+    $(lowerIntro).text("Please enter a number greater then 0");
+  } else {
+    numPlayers = $("#playerCount").val();
+    $("#intro").hide();
+    $("#avatar").show();
+    tempPlayer = "Player " + currentPlayer;
+    $("#numPlayers").text(tempPlayer);
+    console.log(numPlayers);
+  }
+};
+
+
+function multiPlayerCreation() { 
+  if (playerCounter < numPlayers) {
+    createPlayer();
+    playerCounter += 1;
+  } else {
+    allCreated();
+  }
+};
+
+function resetPlayerChoice() {
+  $("#playerName").val("");
+  $(".avatars").css('background-color', 'white');
+};
+
+function allCreated() {
+  $("#avatar").hide();
+  $("#instructions").show();
+  $("#start").show();
+};
+
+function createPlayer () {
+  playerInfo.push({
+    player_id: tempPlayer, 
+    name: $("#playerName").val(),
+    avatar: id,
+    score:[],
+  });
+  console.log(playerInfo);
+};
 
 function setupRace() {
   $("#word").show();
