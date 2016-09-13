@@ -1,12 +1,12 @@
-var playerInfo = [];
-var currentScore = 0;
-var tempPlayer = "";
+
 var numPlayers = 0;
 var currentPlayer = 1;
 var id = "spaceship1";
 var playerCounter = 1; 
 
 $(document).ready(function(){
+
+  $("#numPlayers").text(tempPlayer);
 
   //hide elements
   $(".wordDisplay").hide();
@@ -91,6 +91,7 @@ function generateScore() {
   playerInfo[0].score.unshift(tempScore);
 }
 
+var currentScore = 0;
 var winMessage = "";
 function generateWinMessage() {
   currentScore = playerInfo[0].score[0];
@@ -120,6 +121,7 @@ function createAvatarId() {
   //selection, however, it does selcet the correct one 
   //anyways
 
+
 function playerSelector() {
   if ($("#playerCount").val() > 4) {
     $(lowerIntro).text("Please enter a number less then 5");
@@ -129,33 +131,44 @@ function playerSelector() {
     numPlayers = $("#playerCount").val();
     $("#intro").hide();
     $("#avatar").show();
-    tempPlayer = "Player " + currentPlayer;
-    $("#numPlayers").text(tempPlayer);
-    console.log(numPlayers);
+    // tempPlayer = "Player " + currentPlayer;
+    // $("#numPlayers").text(tempPlayer);
+    // console.log(numPlayers);
   }
 };
 
-
+var tempPlayer = "Player 1";
 function multiPlayerCreation() { 
   if (playerCounter < numPlayers) {
+    console.log("pc" + playerCounter);
+    console.log("np" + numPlayers)
     createPlayer();
     playerCounter += 1;
+    resetPlayerChoice();
+    
   } else {
+    createPlayer();
     allCreated();
   }
 };
 
+
 function resetPlayerChoice() {
   $("#playerName").val("");
   $(".avatars").css('background-color', 'white');
+  currentPlayer += 1;
+  tempPlayer = "Player " + currentPlayer;
+  $("#numPlayers").text(tempPlayer);
 };
 
 function allCreated() {
   $("#avatar").hide();
   $("#instructions").show();
   $("#start").show();
+  console.log(playerInfo);
 };
 
+var playerInfo = [];
 function createPlayer () {
   playerInfo.push({
     player_id: tempPlayer, 
@@ -163,7 +176,6 @@ function createPlayer () {
     avatar: id,
     score:[],
   });
-  console.log(playerInfo);
 };
 
 function setupRace() {
@@ -197,7 +209,3 @@ function runRace() {
     }
   });
 }
-
-
-
-
