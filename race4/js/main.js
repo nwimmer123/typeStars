@@ -1,8 +1,5 @@
 
-var numPlayers = 0;
-var currentPlayer = 1;
-var id = "spaceship1";
-var playerCounter = 1; 
+
 
 $(document).ready(function(){
 
@@ -111,17 +108,14 @@ function winDisplay() {
   $("#finalScore").text(scoreMessage);
 }
 
+var id = "spaceship1";
 function createAvatarId() {
+  $(".avatars").css('background-color', 'white');
   id = $(this).attr("id");
   $(this).css('background-color', 'yellow');
 };
 
-  //BUG: If you change your mind and click a different 
-  //ship then the yellow background remains on the prior 
-  //selection, however, it does selcet the correct one 
-  //anyways
-
-
+var numPlayers = 0;
 function playerSelector() {
   if ($("#playerCount").val() > 4) {
     $(lowerIntro).text("Please enter a number less then 5");
@@ -131,12 +125,10 @@ function playerSelector() {
     numPlayers = $("#playerCount").val();
     $("#intro").hide();
     $("#avatar").show();
-    // tempPlayer = "Player " + currentPlayer;
-    // $("#numPlayers").text(tempPlayer);
-    // console.log(numPlayers);
   }
 };
 
+var playerCounter = 1;
 var tempPlayer = "Player 1";
 function multiPlayerCreation() { 
   if (playerCounter < numPlayers) {
@@ -145,14 +137,13 @@ function multiPlayerCreation() {
     createPlayer();
     playerCounter += 1;
     resetPlayerChoice();
-    
   } else {
     createPlayer();
     allCreated();
   }
 };
 
-
+var currentPlayer = 1;
 function resetPlayerChoice() {
   $("#playerName").val("");
   $(".avatars").css('background-color', 'white');
