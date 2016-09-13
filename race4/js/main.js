@@ -1,5 +1,6 @@
 var playerInfo = [];
 var currentScore = 0;
+var tempPlayer = "";
 
 $(document).ready(function(){
 
@@ -25,8 +26,8 @@ $(document).ready(function(){
 	});
 
   //player selector
-  // CURRENTLY IRRELEVANT - until i reinstitute multiplayer
   var numPlayers = 0;
+  var currentPlayer = 1;
   $("#playerCountBtn").on("click", function() {
     if ($("#playerCount").val() > 4) {
       $(lowerIntro).text("Please enter a number less then 5");
@@ -36,12 +37,14 @@ $(document).ready(function(){
       numPlayers = $("#playerCount").val();
       $("#intro").hide();
       $("#avatar").show();
+      tempPlayer = "Player " + currentPlayer;
+      $("#numPlayers").text(tempPlayer);
       console.log(numPlayers);
     }
   });
 
   //select avatar
-  var id = "ship1";  
+  var id = "spaceship1";  
   $(".avatars").on("click", createAvatarId);
 
   function createAvatarId() {
@@ -54,17 +57,24 @@ $(document).ready(function(){
   //anyways
 
   //Player creation
-  $("#submitPlayer").on("click", createPlayer);
+  // var playerCounter = 1
+  // $("#submitPlayer").on("click", 
+  //   while (playerCounter < numPlayers) {
+  //     createPlayer();
+  //   });
+
+$("#submitPlayer").on("click", createPlayer);
 
   function createPlayer () {
     playerInfo.push({
+      player_id: tempPlayer, 
       name: $("#playerName").val(),
       avatar: id,
       score:[],
     });
     console.log(playerInfo);
-    var playerAvatar = 'url("images/space' + id + '.png")'
-    $(".player").css({background: playerAvatar});
+    //var playerAvatar = 'url("images/' + id + '.png")'
+    
     $("#avatar").hide();
     $("#instructions").show();
     $("#start").show();
@@ -150,6 +160,8 @@ function setupRace() {
   $("#instructions").hide();
   $(".wordDisplay").show();
   $(".player").show();
+  var playerAvatar = 'url("images/' + playerInfo[0].avatar + '.png")'
+  $(".player").css({background: playerAvatar});
 }
 
 function runRace() {
