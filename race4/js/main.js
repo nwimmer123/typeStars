@@ -130,69 +130,82 @@ function generateWords() {
 
     // ** RUNNING GAME FUNCTIONS ** \\
 
-    //hides instructions and reveals game
-    function setupRace(i) {
-      console.log("In Race Setup")
-      $("#word").show();
-      document.getElementById("word").focus();
-      generateWords();
-      $(".toType").text(gameWords[0]);
-      $("#instructions").hide();
-      $(".wordDisplay").show();
-      $(".player").show();
-      var playerAvatar = 'url("images/' + playerInfo[i].avatar + '.png")'
-      $(".player").css({background: playerAvatar});
-    }
+var raceHandlers = [];
+var raceTimeout = 3000;
 
-    //game timer - IS NOT STOPPING THE OTHER FUNCTIONS FROM RUNNING
-    // var timeoutID;
-    // function timer(i) {
-    //   timeoutID = window.setTimeout(checkEndRace, 3000, i)
-    //   console.log("i = " + i);
-    //   console.log(playerInfo[i]);
-    // }
+function tick(i) {
+  // Tail call
+  if (raceHandlers.length > 0) {
+     var action = raceHandlers.pop();
+     setTimeout(action[0],raceTimeout,action[1],i);
+  }
+}
 
-
-
-    // function checkEndRace(i) {
-    //   console.log("in check end race - num players " + numPlayers);
-    //   if (i < numPlayers - 1) {
-    //     setupRace(i);
-    //   }else {
-    //     endRace(i);
-    //   }
-    // }
-
-    //advances ship on correct typing
-    function runRace() {
-      console.log("In run race");
-      var i = 0;
-      while (i < playerInfo.length) {
-        console.log("in run race loop");
-        setupRace(i);
-        //timer(i);
+//hides instructions and reveals game
+function setupRace(i) {
+  console.log("In Race Setup");
+  $("#word").show();
+  document.getElementById("word").focus();
+  generateWords();
+  $(".toType").text(gameWords[0]);
+  $("#instructions").hide();
+  $(".wordDisplay").show();
+  $(".player").show();
+  var playerAvatar = 'url("images/' + playerInfo[i].avatar + '.png")'
+  $(".player").css({background: playerAvatar});
+  tick();
+}
 
 
-        //timer is skipping ahead to the next iteration, eventhough 
-        //checkEndRace hasn't run yet
-        var j = 1;
-        $(document).keyup(function(e){
-          var targetWord = $(".toType").text();
-          var typedWord = $("#word").val();
-          while (j < gameWords.length){
-            if(typedWord === targetWord){
-              $(".player").css({left: "+=15px",});
-              targetWord = $(".toType").text(gameWords[j]);
-              $("#word").val("");
-              j++;
-            }else {
-              return
-            };
-          }
-        });
-        i ++;
-      };
-    }
+//game timer - IS NOT STOPPING THE OTHER FUNCTIONS FROM RUNNING
+// var timeoutID;
+// function timer(i) {
+//   timeoutID = window.setTimeout(checkEndRace, 10000 * (i + 1), i)
+//   console.log("i = " + i);
+//   console.log(playerInfo[i]);
+// }
+
+// function checkEndRace(i) {
+//   console.log("in check end race - num players " + numPlayers);
+//   if (i < numPlayers - 1) {
+//     setupRace(i);
+//   }else {
+//     endRace(i);
+//   }
+// }
+
+//advances ship on correct typing
+function runRace() {
+  console.log("In run race");
+  for (var i = 0; i < playerInfo.length; i++) {
+
+    console.log("in run race loop");
+    // setupRace(i);
+    // timer(i);
+    raceHandlers.unshift([setupRace,i]);
+    //timer is skipping ahead to the next iteration, eventhough 
+    //checkEndRace hasn't run yet
+    var j = 1;
+    $(document).keyup(function(e){
+      var targetWord = $(".toType").text();
+      var typedWord = $("#word").val();
+      while (j < gameWords.length){
+        if(typedWord === targetWord){
+          $(".player").css({left: "+=15px",});
+          targetWord = $(".toType").text(gameWords[j]);
+          $("#word").val("");
+          j++;
+        }else {
+          return
+        };
+      }
+    });
+
+  };
+
+  raceHandlers.unshift([endRace,playerInfo.length]);
+  tick();
+}
 
 // ** END GAME FUNCTIONS ** \\
 
