@@ -84,20 +84,22 @@ function createPlayer () {
 };
 
 //clears player creation div
-var currentPlayer = 1;
+var currentPlayerNum = 1;
 function resetPlayerChoice() {
   $("#playerName").val("");
   $(".avatars").css('background-color', 'white');
-  currentPlayer += 1;
-  tempPlayer = "Player " + currentPlayer;
+  currentPlayerNum += 1;
+  tempPlayer = "Player " + currentPlayerNum;
   $("#numPlayers").text(tempPlayer);
 };
 
 //hides selection div and reveals instruvtion div
+var currentPlayer = 0
 function allCreated() {
   $("#avatar").hide();
   $("#instructions").show();
   $("#start").show();
+  $("#instructionsName").text(playerInfo[currentPlayer].name);
   console.log(playerInfo);
 };
 
@@ -130,19 +132,16 @@ function generateWords() {
 
     // ** RUNNING GAME FUNCTIONS ** \\
 
-var raceHandlers = [];
-var raceTimeout = 3000;
-
-function tick(i) {
-  // Tail call
-  if (raceHandlers.length > 0) {
-     var action = raceHandlers.pop();
-     setTimeout(action[0],raceTimeout,action[1],i);
+var currentPlayer = 0
+function checkMultiPlayer() {
+  while (currentPlayer < currentPlayerNum) {
+    allCreated();
+    currentPlayer += 1;
   }
 }
 
 //hides instructions and reveals game
-function setupRace(i) {
+function setupRace() {
   console.log("In Race Setup");
   $("#word").show();
   document.getElementById("word").focus();
@@ -151,98 +150,65 @@ function setupRace(i) {
   $("#instructions").hide();
   $(".wordDisplay").show();
   $(".player").show();
-  var playerAvatar = 'url("images/' + playerInfo[i].avatar + '.png")'
+  var playerAvatar = 'url("images/' + playerInfo[currentPlayer].avatar + '.png")'
   $(".player").css({background: playerAvatar});
-  tick();
 }
 
-
 //game timer - IS NOT STOPPING THE OTHER FUNCTIONS FROM RUNNING
-// var timeoutID;
-// function timer(i) {
-//   timeoutID = window.setTimeout(checkEndRace, 10000 * (i + 1), i)
-//   console.log("i = " + i);
-//   console.log(playerInfo[i]);
-// }
-
-// function checkEndRace(i) {
-//   console.log("in check end race - num players " + numPlayers);
-//   if (i < numPlayers - 1) {
-//     setupRace(i);
-//   }else {
-//     endRace(i);
-//   }
-// }
+var timeoutID;
+function timer() {
+  timeoutID = window.setTimeout(endRace, 5000)
+}
 
 //advances ship on correct typing
 function runRace() {
   console.log("In run race");
-  for (var i = 0; i < playerInfo.length; i++) {
-
-    console.log("in run race loop");
-    // setupRace(i);
-    // timer(i);
-    raceHandlers.unshift([setupRace,i]);
-    //timer is skipping ahead to the next iteration, eventhough 
-    //checkEndRace hasn't run yet
-    var j = 1;
-    $(document).keyup(function(e){
-      var targetWord = $(".toType").text();
-      var typedWord = $("#word").val();
-      while (j < gameWords.length){
-        if(typedWord === targetWord){
-          $(".player").css({left: "+=15px",});
-          targetWord = $(".toType").text(gameWords[j]);
-          $("#word").val("");
-          j++;
-        }else {
-          return
-        };
-      }
-    });
-
-  };
-
-  raceHandlers.unshift([endRace,playerInfo.length]);
-  tick();
+  setupRace();
+  var j = 1;
+  $(document).keyup(function(e){
+    var targetWord = $(".toType").text();
+    var typedWord = $("#word").val();
+    while (j < gameWords.length){
+      if(typedWord === targetWord){
+        $(".player").css({left: "+=15px",});
+        targetWord = $(".toType").text(gameWords[j]);
+        $("#word").val("");
+        j++;
+      }else {
+        return
+      };
+    }
+  });
 }
 
 // ** END GAME FUNCTIONS ** \\
 
 //hides race div and generates score
-function endRace(i) {
+function endRace() {
   console.log("In end race");
   $(".wordDisplay").hide();
   $("#word").hide();
   alert("Times Up!");
-  generateScore(i);
-  generateWinMessage(i);
-  if (i < playerInfo.length - 1) {
-    return;
-
-  } else {
-  winDisplay();
-  $("#endGame").show();
-  $("#gameReset").show();
-  }
+  generateScore();
+  generateWinMessage();
 }
 
-function generateScore(i) {
+function generateScore() {
   var tempScore = $(".player").css("left");
   tempScore = tempScore.slice(0, -2);
   tempScore = parseInt(tempScore) * 10;
-  playerInfo[i].score.unshift(tempScore);
+  playerInfo[currentPlayer].score.unshift(tempScore);
 }
 
 var currentScore = 0;
 var winMessage = "";
-function generateWinMessage(i) {
-  currentScore = playerInfo[i].score[0];
+function generateWinMessage() {
+  currentScore = playerInfo[currentPlayer].score[0];
   console.log(currentScore);
   if (currentScore > 3000 ){
-    winMessage = "Holy nebula, " + playerInfo[i].name + "!!!! You're amazing!!!"
+    winMessage = "Holy nebula, " + playerInfo[currentPlayer].name + "!!!! You're amazing!!!"
   }else if(currentScore > 1000){
-    winMessage = "You're pretty good, " + playerInfo[i].name + "!"
+    winMessage = "You're pretty good, " + playerInfo[currentPlayer].name + "!"
   }else{
     winMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[i].name + "!"
   }
