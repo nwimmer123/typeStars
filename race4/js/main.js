@@ -128,86 +128,110 @@ function generateWords() {
    }
 }
 
-// ** RUNNING GAME FUNCTIONS ** \\
+    // ** RUNNING GAME FUNCTIONS ** \\
 
-//hides instructions and reveals game
-function setupRace(i) {
-  $("#word").show();
-  document.getElementById("word").focus();
-  generateWords();
-  $(".toType").text(gameWords[0]);
-  $("#instructions").hide();
-  $(".wordDisplay").show();
-  $(".player").show();
-  var playerAvatar = 'url("images/' + playerInfo[i].avatar + '.png")'
-  $(".player").css({background: playerAvatar});
-}
+    //hides instructions and reveals game
+    function setupRace(i) {
+      console.log("In Race Setup")
+      $("#word").show();
+      document.getElementById("word").focus();
+      generateWords();
+      $(".toType").text(gameWords[0]);
+      $("#instructions").hide();
+      $(".wordDisplay").show();
+      $(".player").show();
+      var playerAvatar = 'url("images/' + playerInfo[i].avatar + '.png")'
+      $(".player").css({background: playerAvatar});
+    }
 
-//game timer
-var timeoutID;
-function timer(i) {
-  timeoutID = window.setTimeout(endRace, 3000)
-}
+    //game timer - IS NOT STOPPING THE OTHER FUNCTIONS FROM RUNNING
+    // var timeoutID;
+    // function timer(i) {
+    //   timeoutID = window.setTimeout(checkEndRace, 3000, i)
+    //   console.log("i = " + i);
+    //   console.log(playerInfo[i]);
+    // }
 
-//advances ship on correct typing
-function runRace() {
-  for (var i = 0; i < playerInfo.length; i++) {
-    setupRace(i);
-    timer();
-    var j = 1;
-    $(document).keyup(function(e){
-      var targetWord = $(".toType").text();
-      var typedWord = $("#word").val();
-      while (j < gameWords.length){
-        if(typedWord === targetWord){
-          $(".player").css({left: "+=15px",});
-          targetWord = $(".toType").text(gameWords[j]);
-          $("#word").val("");
-          j++;
-        }else {
-          return
-        };
-      }
-    });
-  };
-}
+
+
+    // function checkEndRace(i) {
+    //   console.log("in check end race - num players " + numPlayers);
+    //   if (i < numPlayers - 1) {
+    //     setupRace(i);
+    //   }else {
+    //     endRace(i);
+    //   }
+    // }
+
+    //advances ship on correct typing
+    function runRace() {
+      console.log("In run race");
+      var i = 0;
+      while (i < playerInfo.length) {
+        console.log("in run race loop");
+        setupRace(i);
+        //timer(i);
+
+
+        //timer is skipping ahead to the next iteration, eventhough 
+        //checkEndRace hasn't run yet
+        var j = 1;
+        $(document).keyup(function(e){
+          var targetWord = $(".toType").text();
+          var typedWord = $("#word").val();
+          while (j < gameWords.length){
+            if(typedWord === targetWord){
+              $(".player").css({left: "+=15px",});
+              targetWord = $(".toType").text(gameWords[j]);
+              $("#word").val("");
+              j++;
+            }else {
+              return
+            };
+          }
+        });
+        i ++;
+      };
+    }
 
 // ** END GAME FUNCTIONS ** \\
 
 //hides race div and generates score
 function endRace(i) {
+  console.log("In end race");
   $(".wordDisplay").hide();
   $("#word").hide();
   alert("Times Up!");
-  generateScore();
-  generateWinMessage();
-  if (i < playerInfo.length) {
-    $("#start").show();
-    
-  }
+  generateScore(i);
+  generateWinMessage(i);
+  if (i < playerInfo.length - 1) {
+    return;
+
+  } else {
   winDisplay();
   $("#endGame").show();
   $("#gameReset").show();
+  }
 }
 
-function generateScore() {
+function generateScore(i) {
   var tempScore = $(".player").css("left");
   tempScore = tempScore.slice(0, -2);
   tempScore = parseInt(tempScore) * 10;
-  playerInfo[0].score.unshift(tempScore);
+  playerInfo[i].score.unshift(tempScore);
 }
 
 var currentScore = 0;
 var winMessage = "";
-function generateWinMessage() {
-  currentScore = playerInfo[0].score[0];
+function generateWinMessage(i) {
+  currentScore = playerInfo[i].score[0];
   console.log(currentScore);
   if (currentScore > 3000 ){
-    winMessage = "Holy nebula, " + playerInfo[0].name + "!!!! You're amazing!!!"
+    winMessage = "Holy nebula, " + playerInfo[i].name + "!!!! You're amazing!!!"
   }else if(currentScore > 1000){
-    winMessage = "You're pretty good, " + playerInfo[0].name + "!"
+    winMessage = "You're pretty good, " + playerInfo[i].name + "!"
   }else{
-    winMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[0].name + "!"
+    winMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[i].name + "!"
   }
 }
 

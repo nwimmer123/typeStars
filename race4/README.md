@@ -65,8 +65,4 @@ I'm going to keep adding to this game.
 -I also then want to add a database and a server and let people play online and have their scores and avatars saved.
 -I will also increase the size of the wordbank.
 
----
 
-##### Screenshot
-
-##### Link to hosted project on GitHub pages or BitBalloon (optional)
