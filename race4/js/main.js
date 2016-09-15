@@ -134,9 +134,13 @@ function generateWords() {
 
 var currentPlayer = 0
 function checkMultiPlayer() {
-  while (currentPlayer < currentPlayerNum) {
+  currentPlayer += 1;
+  console.log("currentPlayer: " + currentPlayer);
+  console.log("cp stats: " + playerInfo[currentPlayer]);
+  if (currentPlayer < currentPlayerNum) {
     allCreated();
-    currentPlayer += 1;
+  }else {
+    winDisplay();
   }
 }
 
@@ -152,6 +156,7 @@ function setupRace() {
   $(".player").show();
   var playerAvatar = 'url("images/' + playerInfo[currentPlayer].avatar + '.png")'
   $(".player").css({background: playerAvatar});
+  timer();
 }
 
 //game timer - IS NOT STOPPING THE OTHER FUNCTIONS FROM RUNNING
@@ -191,6 +196,7 @@ function endRace() {
   alert("Times Up!");
   generateScore();
   generateWinMessage();
+  checkMultiPlayer();
 }
 
 function generateScore() {
@@ -200,9 +206,10 @@ function generateScore() {
   playerInfo[currentPlayer].score.unshift(tempScore);
 }
 
-var currentScore = 0;
+
 var winMessage = "";
 function generateWinMessage() {
+  var currentScore = 0;
   currentScore = playerInfo[currentPlayer].score[0];
   console.log(currentScore);
   if (currentScore > 3000 ){
@@ -210,7 +217,7 @@ function generateWinMessage() {
   }else if(currentScore > 1000){
     winMessage = "You're pretty good, " + playerInfo[currentPlayer].name + "!"
   }else{
-    winMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[i].name + "!"
+    winMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[currentPlayer].name + "!"
   }
 }
 
