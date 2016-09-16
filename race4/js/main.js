@@ -24,6 +24,10 @@ $(document).ready(function(){
 		$(".player").css({left: 0,});
     $("#endGame").hide();
     $("#gameReset").hide();
+    gameWords = [];
+    currentPlayer = 0;
+    var currentScore = "";
+    var singleWinMessage = "";
     generateWords();
     allCreated();
 	});
@@ -154,7 +158,7 @@ function setupRace() {
 //game timer
 var timeoutID;
 function timer() {
-  timeoutID = window.setTimeout(endRace, 15000)
+  timeoutID = window.setTimeout(endRace, 10000)
 }
 
 var j=1; 
