@@ -205,7 +205,7 @@ function checkMorePlayer() {
 }
 
 function checkMultiPlayer() {
-  if (numPlayers === 1) {
+  if (numPlayers == 1) {
     generateWinMessage();
     winDisplay();
   } else {
