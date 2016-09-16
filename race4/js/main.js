@@ -133,7 +133,7 @@ function generateWords() {
     // ** RUNNING GAME FUNCTIONS ** \\
 
 var currentPlayer = 0
-function checkMultiPlayer() {
+function checkMorePlayer() {
   currentPlayer += 1;
   console.log("currentPlayer: " + currentPlayer);
   console.log("cp stats: " + playerInfo[currentPlayer]);
@@ -141,8 +141,18 @@ function checkMultiPlayer() {
     allCreated();
   }else {
     currentPlayer -= 1;
-    winDisplay();
+    checkMultiPlayer();
   }
+}
+
+function checkMultiPlayer() {
+  console.log("numPlayers: " + numPlayers);
+  if (numPlayers === 1) {
+    winDisplay();
+  } else {
+    winConditions();
+  }
+
 }
 
 //hides instructions and reveals game
@@ -199,7 +209,7 @@ function endRace() {
   alert("Times Up!");
   generateScore();
   generateWinMessage(); //not needed in multiplayer
-  checkMultiPlayer();
+  checkMorePlayer();
 }
 
 function generateScore() {
@@ -233,9 +243,11 @@ function winDisplay() {
 
 //check to see who has the highest score
 function winConditions() {
+  console.log("playerInfo.length: " + playerInfo.length);
+  var winner;
+  var bestScore;
   for (var i = 0; i < playerInfo.length - 1; i++) {
-    var winner;
-    var bestScore;
+
       if (playerInfo[i].score > playerInfo[i + 1]) {
         winner = playerInfo[i].name;
         bestScore = playerInfo[i].score[0];
@@ -249,7 +261,7 @@ function winConditions() {
 
 function multiWinDisplay(winner, bestScore) {
   $("#gameReset").show();
-  var winMessage = "Good job " + winner + "You outflew your competition and went " + bestScore + "miles!";
+  var winMessage = "Good job " + winner + "! You outflew your competition and went " + bestScore + "miles!";
   $("#winMessage").text(winMessage);
 }
 
