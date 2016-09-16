@@ -24,6 +24,7 @@ $(document).ready(function(){
 		$(".player").css({left: 0,});
     $("#endGame").hide();
     $("#gameReset").hide();
+    generateWords();
     runRace();
 	});
 
@@ -134,37 +135,19 @@ function generateWords() {
 
     // ** RUNNING GAME FUNCTIONS ** \\
 
-var currentPlayer = 0
-function checkMorePlayer() {
-  currentPlayer += 1;
-  if (currentPlayer < currentPlayerNum) {
-    allCreated();
-  }else {
-    currentPlayer -= 1;
-    checkMultiPlayer();
-  }
-}
 
-function checkMultiPlayer() {
-  if (numPlayers === 1) {
-    winDisplay();
-  } else {
-    winConditions();
-  }
-}
 
 //hides instructions and reveals game
 function setupRace() {
   $("#word").show();
   document.getElementById("word").focus();
-  //I need to move generateWords, so that the word array is 
-  //the same for all players. it should only regenereate on reset
-  
   $(".toType").text(gameWords[0]);
+  console.log(gameWords);
   $("#instructions").hide();
   $(".wordDisplay").show();
   $(".player").show();
   $(".player").css({left: 0,});
+  $("#word").val("");
   var playerAvatar = 'url("images/' + playerInfo[currentPlayer].avatar + '.png")'
   $(".player").css({background: playerAvatar});
   timer();
@@ -173,7 +156,7 @@ function setupRace() {
 //game timer
 var timeoutID;
 function timer() {
-  timeoutID = window.setTimeout(endRace, 12000)
+  timeoutID = window.setTimeout(endRace, 15000)
 }
 
 //advances ship on correct typing
@@ -208,6 +191,25 @@ function endRace() {
   generateScore();
   generateWinMessage(); //not needed in multiplayer
   checkMorePlayer();
+}
+
+var currentPlayer = 0
+function checkMorePlayer() {
+  currentPlayer += 1;
+  if (currentPlayer < currentPlayerNum) {
+    allCreated();
+  }else {
+    currentPlayer -= 1;
+    checkMultiPlayer();
+  }
+}
+
+function checkMultiPlayer() {
+  if (numPlayers === 1) {
+    winDisplay();
+  } else {
+    winConditions();
+  }
 }
 
 function generateScore() {
@@ -256,6 +258,6 @@ function winConditions() {
 
 function multiWinDisplay(winner, bestScore) {
   $("#gameReset").show();
-  var winMessage = "Good job " + winner + "! You outflew your competition and went " + bestScore + "miles!";
+  var winMessage = "Good job " + winner + "! You outflew your competition and went " + bestScore + " miles!";
   $("#winMessage").text(winMessage);
 }
