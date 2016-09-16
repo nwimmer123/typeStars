@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+  //setup initial word list
+  generateWords();
   
   //set default name for Create Player div 
   $("#numPlayers").text(tempPlayer);
@@ -143,13 +146,11 @@ function checkMorePlayer() {
 }
 
 function checkMultiPlayer() {
-  console.log("numPlayers: " + numPlayers);
   if (numPlayers === 1) {
     winDisplay();
   } else {
     winConditions();
   }
-
 }
 
 //hides instructions and reveals game
@@ -158,7 +159,7 @@ function setupRace() {
   document.getElementById("word").focus();
   //I need to move generateWords, so that the word array is 
   //the same for all players. it should only regenereate on reset
-  generateWords();
+  
   $(".toType").text(gameWords[0]);
   $("#instructions").hide();
   $(".wordDisplay").show();
@@ -239,7 +240,6 @@ function winDisplay() {
 
 //check to see who has the highest score
 function winConditions() {
-  console.log("playerInfo.length: " + playerInfo.length);
   var winner;
   var bestScore;
   for (var i = 0; i < playerInfo.length - 1; i++) {
