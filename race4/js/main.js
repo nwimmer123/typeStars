@@ -160,20 +160,23 @@ function setupRace() {
   console.log("In Race Setup");
   $("#word").show();
   document.getElementById("word").focus();
+  //I need to move generateWords, so that the word array is 
+  //the same for all players. it should only regenereate on reset
   generateWords();
   $(".toType").text(gameWords[0]);
   $("#instructions").hide();
   $(".wordDisplay").show();
   $(".player").show();
+  $(".player").css({left: 0,});
   var playerAvatar = 'url("images/' + playerInfo[currentPlayer].avatar + '.png")'
   $(".player").css({background: playerAvatar});
   timer();
 }
 
-//game timer - IS NOT STOPPING THE OTHER FUNCTIONS FROM RUNNING
+//game timer
 var timeoutID;
 function timer() {
-  timeoutID = window.setTimeout(endRace, 5000)
+  timeoutID = window.setTimeout(endRace, 12000)
 }
 
 //advances ship on correct typing
