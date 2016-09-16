@@ -163,10 +163,16 @@ function timer() {
 function runRace() {
   setupRace();
   var j = 1;
+  //BUG HERE !! Works fine on first iteration but on second 
+  //iterations value jumps beteween 1 and whatever the next 
+  //one is. It's like on every keystroke it reassigns var j
+  //back to 1, then back to the element number it was on 
+  //last time
   $(document).keyup(function(e){
     var targetWord = $(".toType").text();
     var typedWord = $("#word").val();
     while (j < gameWords.length){
+      console.log("j = " + j);
       if(typedWord === targetWord){
         $(".player").css({left: "+=15px",});
         targetWord = $(".toType").text(gameWords[j]);
