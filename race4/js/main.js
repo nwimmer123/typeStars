@@ -140,6 +140,7 @@ function checkMultiPlayer() {
   if (currentPlayer < currentPlayerNum) {
     allCreated();
   }else {
+    currentPlayer -= 1;
     winDisplay();
   }
 }
@@ -189,13 +190,15 @@ function runRace() {
 // ** END GAME FUNCTIONS ** \\
 
 //hides race div and generates score
+//this could be refactred, as many parts of it don't need 
+//to run in a multiplayer game, but it runs every time anyways
 function endRace() {
   console.log("In end race");
-  $(".wordDisplay").hide();
-  $("#word").hide();
+  $(".wordDisplay").hide(); //not needed in multiplayer
+  $("#word").hide(); //not needed in multiplayer
   alert("Times Up!");
   generateScore();
-  generateWinMessage();
+  generateWinMessage(); //not needed in multiplayer
   checkMultiPlayer();
 }
 
@@ -206,10 +209,9 @@ function generateScore() {
   playerInfo[currentPlayer].score.unshift(tempScore);
 }
 
-
-var winMessage = "";
+var currentScore;
+var winMessage;
 function generateWinMessage() {
-  var currentScore = 0;
   currentScore = playerInfo[currentPlayer].score[0];
   console.log(currentScore);
   if (currentScore > 3000 ){
@@ -222,10 +224,35 @@ function generateWinMessage() {
 }
 
 function winDisplay() {
+  $("#endGame").show();
+  $("#gameReset").show();
   $("#winMessage").text(winMessage);
   var scoreMessage = currentScore + " Miles Traveled"
   $("#finalScore").text(scoreMessage);
 }
+
+//check to see who has the highest score
+function winConditions() {
+  for (var i = 0; i < playerInfo.length - 1; i++) {
+    var winner;
+    var bestScore;
+      if (playerInfo[i].score > playerInfo[i + 1]) {
+        winner = playerInfo[i].name;
+        bestScore = playerInfo[i].score[0];
+      } else {
+        winner = playerInfo[i].name;
+        bestScore = playerInfo[i].score[0];
+      }
+  };
+  multiWinDisplay(winner, bestScore);
+}
+
+function multiWinDisplay(winner, bestScore) {
+  $("#gameReset").show();
+  var winMessage = "Good job " + winner + "You outflew your competition and went " + bestScore + "miles!";
+  $("#winMessage").text(winMessage);
+}
+
 
 //BACK UP SINGLE PLAYER WORKING RUN RACE FUNCTION
 // function runRace() {
