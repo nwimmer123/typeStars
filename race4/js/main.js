@@ -25,7 +25,7 @@ $(document).ready(function(){
     $("#endGame").hide();
     $("#gameReset").hide();
     generateWords();
-    runRace();
+    allCreated();
 	});
 
   //player selector
@@ -190,7 +190,6 @@ function endRace() {
   $("#word").hide(); //not needed in multiplayer
   alert("Times Up!");
   generateScore();
-  generateWinMessage(); //not needed in multiplayer
   checkMorePlayer();
 }
 
@@ -207,6 +206,7 @@ function checkMorePlayer() {
 
 function checkMultiPlayer() {
   if (numPlayers === 1) {
+    generateWinMessage();
     winDisplay();
   } else {
     winConditions();
@@ -221,22 +221,22 @@ function generateScore() {
 }
 
 var currentScore;
-var winMessage;
+var singleWinMessage;
 function generateWinMessage() {
   currentScore = playerInfo[currentPlayer].score[0];
   if (currentScore > 3000 ){
-    winMessage = "Holy nebula, " + playerInfo[currentPlayer].name + "!!!! You're amazing!!!"
+    singleWinMessage = "Holy nebula, " + playerInfo[currentPlayer].name + "!!!! You're amazing!!!"
   }else if(currentScore > 1000){
-    winMessage = "You're pretty good, " + playerInfo[currentPlayer].name + "!"
+    singleWinMessage = "You're pretty good, " + playerInfo[currentPlayer].name + "!"
   }else{
-    winMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[currentPlayer].name + "!"
+    singleWinMessage = "Hmmm, you definetley need to keep playing this game. Keep at it " + playerInfo[currentPlayer].name + "!"
   }
 }
 
 function winDisplay() {
   $("#endGame").show();
   $("#gameReset").show();
-  $("#winMessage").text(winMessage);
+  $("#winMessage").text(singleWinMessage);
   var scoreMessage = currentScore + " Miles Traveled"
   $("#finalScore").text(scoreMessage);
 }
