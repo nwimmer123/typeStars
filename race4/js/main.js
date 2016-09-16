@@ -100,7 +100,6 @@ function allCreated() {
   $("#instructions").show();
   $("#start").show();
   $("#instructionsName").text(playerInfo[currentPlayer].name);
-  console.log(playerInfo);
 };
 
 // ** WORD ARRAY CREATOR FUNCTIONS ** \\
@@ -135,8 +134,6 @@ function generateWords() {
 var currentPlayer = 0
 function checkMorePlayer() {
   currentPlayer += 1;
-  console.log("currentPlayer: " + currentPlayer);
-  console.log("cp stats: " + playerInfo[currentPlayer]);
   if (currentPlayer < currentPlayerNum) {
     allCreated();
   }else {
@@ -157,7 +154,6 @@ function checkMultiPlayer() {
 
 //hides instructions and reveals game
 function setupRace() {
-  console.log("In Race Setup");
   $("#word").show();
   document.getElementById("word").focus();
   //I need to move generateWords, so that the word array is 
@@ -181,7 +177,6 @@ function timer() {
 
 //advances ship on correct typing
 function runRace() {
-  console.log("In run race");
   setupRace();
   var j = 1;
   $(document).keyup(function(e){
@@ -206,7 +201,6 @@ function runRace() {
 //this could be refactred, as many parts of it don't need 
 //to run in a multiplayer game, but it runs every time anyways
 function endRace() {
-  console.log("In end race");
   $(".wordDisplay").hide(); //not needed in multiplayer
   $("#word").hide(); //not needed in multiplayer
   alert("Times Up!");
@@ -226,7 +220,6 @@ var currentScore;
 var winMessage;
 function generateWinMessage() {
   currentScore = playerInfo[currentPlayer].score[0];
-  console.log(currentScore);
   if (currentScore > 3000 ){
     winMessage = "Holy nebula, " + playerInfo[currentPlayer].name + "!!!! You're amazing!!!"
   }else if(currentScore > 1000){
@@ -250,14 +243,13 @@ function winConditions() {
   var winner;
   var bestScore;
   for (var i = 0; i < playerInfo.length - 1; i++) {
-
-      if (playerInfo[i].score > playerInfo[i + 1]) {
-        winner = playerInfo[i].name;
-        bestScore = playerInfo[i].score[0];
-      } else {
-        winner = playerInfo[i].name;
-        bestScore = playerInfo[i].score[0];
-      }
+    if (playerInfo[i].score[0] > playerInfo[i + 1].score[0]) {
+      winner = playerInfo[i].name;
+      bestScore = playerInfo[i].score[0];
+    } else {
+      winner = playerInfo[i + 1].name;
+      bestScore = playerInfo[i + 1].score[0];
+    }
   };
   multiWinDisplay(winner, bestScore);
 }
@@ -267,27 +259,3 @@ function multiWinDisplay(winner, bestScore) {
   var winMessage = "Good job " + winner + "! You outflew your competition and went " + bestScore + "miles!";
   $("#winMessage").text(winMessage);
 }
-
-
-//BACK UP SINGLE PLAYER WORKING RUN RACE FUNCTION
-// function runRace() {
-
-//   setupRace();
-//   timer();
-//   var j = 1;
-//   $(document).keyup(function(e){
-//     var targetWord = $(".toType").text();
-//     var typedWord = $("#word").val();
-//     while (j < gameWords.length){
-//       if(typedWord === targetWord){
-//         $(".player").css({left: "+=15px",});
-//         targetWord = $(".toType").text(gameWords[j]);
-//         $("#word").val("");
-//         j++;
-//       }else {
-//         return
-//       };
-//     }
-//   });
-
-// }

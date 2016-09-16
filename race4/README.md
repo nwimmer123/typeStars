@@ -64,5 +64,8 @@ I'm going to keep adding to this game.
 -I want to add the possibility of having up to 4 players, so individuals can play each other locally, and keep high scores up on screen for others to see. 
 -I also then want to add a database and a server and let people play online and have their scores and avatars saved.
 -I will also increase the size of the wordbank.
+-I will make an easy, medium, or hard category for the game.
+-I will allow players to select different languages.
+-A really intersting challenge would be to allow alternate alphabets, such as Cyrillic.
 
 
