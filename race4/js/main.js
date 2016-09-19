@@ -26,7 +26,7 @@ $(document).ready(function(){
     $("#gameReset").hide();
     gameWords = [];
     currentPlayer = 0;
-    var currentScore = "";
+    var currentScore = 0;
     var singleWinMessage = "";
     generateWords();
     allCreated();
@@ -247,6 +247,7 @@ function winDisplay() {
 
 //check to see who has the highest score
 function winConditions() {
+  console.log("I'm in winConditions");
   var winner;
   var bestScore;
   for (var i = 0; i < playerInfo.length - 1; i++) {
@@ -262,6 +263,7 @@ function winConditions() {
 }
 
 function multiWinDisplay(winner, bestScore) {
+  $("#endGame").show();
   $("#gameReset").show();
   var winMessage = "Good job " + winner + "! You outflew your competition and went " + bestScore + " miles!";
   $("#winMessage").text(winMessage);
