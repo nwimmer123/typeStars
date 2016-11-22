@@ -158,7 +158,7 @@ function setupRace() {
 //game timer
 var timeoutID;
 function timer() {
-  timeoutID = window.setTimeout(endRace, 10000)
+  timeoutID = window.setTimeout(endRace, 45000)
 }
 
 var j=1; 
